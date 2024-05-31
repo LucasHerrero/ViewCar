@@ -6,7 +6,7 @@ Car configurator for a dealership with user and administrator view. Create your 
 
 ## Project View
 
-![Image text](https://github.com/LucasHerrero/The-Path/blob/main/home.png)
+![Image text](https://github.com/LucasHerrero/ViewCarFront/blob/main/AdmEdit.png)
 
 At this moment the proyect is not finished yet!
 
