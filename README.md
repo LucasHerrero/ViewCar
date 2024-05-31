@@ -19,11 +19,11 @@ Car configurator for a dealership with user and administrator view. Create your 
 ![Image text](https://github.com/LucasHerrero/ViewCarFront/blob/main/ContactoLog.png)
 
 
-At this moment the proyect is not finished yet!
+## At this moment the proyect is not finished yet!
 
 · This project was created with Spring boot Api and mySql Database.
 
-💻 Built using:
+# 💻 Built using:
 
 · Angular
 
