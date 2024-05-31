@@ -4,7 +4,9 @@ Car configurator for a dealership with user and administrator view. Create your 
 
 # · Live Demo: https://viewcars.netlify.app/
 
+## Project View
 
+![Image text](https://github.com/LucasHerrero/The-Path/blob/main/home.png)
 
 At this moment the proyect is not finished yet!
 
