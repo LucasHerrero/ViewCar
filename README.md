@@ -1,27 +1,33 @@
-# Concesionario
+# ViewCar 🚕
+Group project done by web developers, for educational purposes, using agile and dynamic SCRUM methodology
+Project preview
+![Configurador4](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/4026b456-5355-4563-9f42-50c52f8f803f)
+![Configurador3](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/4a62a4c5-c556-4550-93ed-777e130f5f7d)
+![Configurador2](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/fd5848ca-3d04-48b2-a537-46943dffbbc5)
+![Configurador1](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/2c8d0e86-8942-4da8-81b5-365f605e92d9)
+![AdmEdit](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/56944ca3-e7c6-4513-8c5c-c69704b78768)
+![ContactoAdm](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/25847e5c-3f78-4007-aa95-cfcdf6a337a2)
+![CitaCalendar](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/3e16b752-5382-4ff1-a90f-2a394dcb9757)
+![PanelDeADmi](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/c47b8a48-a622-42ec-99a1-2cb940243bd3)
+![ContactoLog2](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/1236e56f-4b68-4236-a063-8403bd58516b)
+![ContactoLog](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/3106b689-a32e-4687-bca8-3ec05a1a3930)
+![Contacto](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/84113021-0a6a-4bff-8dc6-cb2a59fa8568)
+![Modelos](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/270c6bc6-f899-4a0f-b409-07f1f6afedc8)
+![Configurador6](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/db6a5cd5-56bf-4027-a534-ffb7babb3bbc)
+![Configurador5](https://github.com/LucasHerrero/ViewCarFront/assets/106039254/7ac8be7a-ef17-4176-b310-364706e9617c)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+At this moment the proyect is not finished yet!
 
-## Development server
+· Live Demo: https://viewcars.netlify.app/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+· This project was created with Spring boot Api and mySql Database.
 
-## Code scaffolding
+💻 Built using:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+· Angular
 
-## Build
+· Tailwind CSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+· SpringBoot
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+· MySql
