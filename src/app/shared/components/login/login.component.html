@@ -1,0 +1,64 @@
+<!-- Login component -->
+<div class="flex justify-center items-center w-full h-full">
+
+  <!-- Login form -->
+  <div class="flex flex-col xl:flex-row shadow-md w-full h-full">
+
+    <!-- Login form container -->
+    <div class="xl:w-1/2 bg-white p-5">
+      <!-- Heading -->
+      <div class="text-center mb-6 xl:p-5 p-5">
+        <p class="text-2xl font-bold mb-5">{{ 'login.title' | translate }}</p>
+        <p class="">{{ 'login.subtitle' | translate }}</p>
+      </div>
+
+      <!-- Form -->
+      <form class=" p-3 mb-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label class="block mb-2 text-sm font-semibold" for="email">Email</label>
+          <input class="w-full border border-gray-300 rounded-md py-2 px-3" formControlName="username" type="email"
+            name="email" id="email" placeholder="{{ 'login.email' | translate }}">
+        </div>
+
+        <div class="mb-2">
+          <label class="block mb-2 text-sm font-bold" for="password">Contraseña</label>
+          <input class="w-full border border-gray-300 rounded-md py-2 px-3" formControlName="password" type="password"
+            name="password" id="password" placeholder="{{ 'login.password' | translate }}">
+        </div>
+
+        <div class="flex items-center mb-4 pt-3">
+          <input formControlName="rememberMe" id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recuérdame</label>
+      </div>
+
+
+        <div class="pt-5">
+          <button [disabled]="loginForm.invalid"
+            class="w-full bg-black rounded-md text-white font-medium py-2 disabled:bg-black/40 disabled:cursor-not-allowed">{{
+            'login.login' | translate }}</button>
+        <a href="/recuperar" class="text-sm underline">¿Has olvidado tu contraseña?</a>
+
+
+
+      <div class="pt-2 pb-0">
+        <p> No has creado una cuenta? <a href="/registro" class="underline hover:text-primary">Regístrate</a></p>
+      </div>
+
+      <div class="pt-2 pb-0">
+        <p class="text-xs text-muted-foreground text-center">
+          {{ 'login.conditions' | translate }}
+          <a href="/terms" class="underline hover:text-primary">{{ 'login.terms' | translate }}</a>
+          {{ 'login.and' | translate }}
+          <a href="/privacy" class="underline hover:text-primary">{{ 'login.privacy' | translate }}</a>.
+        </p>
+      </div>
+    </div>
+  </form>
+    </div>
+    <!-- Login banner -->
+    <div class="hidden xl:block xl:w-1/2 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('assets/images/audi-bg.avif')">
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="mt-10">
+  <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+
+  <div class="flex text-3xl">
+    <span class="font-extrabold text-6xl pr-1">5.</span>
+    <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'add_model.title23' | translate }}</h1>
+  </div>
+
+  <form class="space-y-4 pt-12">
+    <!-- Campo para el nombre de la marca -->
+    <div class="flex md:flex-row flex-col gap-5 items-center ">
+      <div class="md:w-[65%] w-full">
+        <label for="extColorName" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title24' | translate }}
+        </label>
+        <input type="text" value="{{extColorName}}" name="extColorName" id="extColorName"
+          placeholder="{{ 'add_model.title26' | translate }}" (change)="onInputChange24($event)"
+          class="w-full rounded-md border border-[#b1b1b1] bg-white py-2.5 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+      </div>
+
+      <div class="md:w-[35%] w-full md:mb-0 mb-5">
+        <label for="text" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title27' | translate }}
+        </label>
+        <div class="mt-3">
+          <input type="file" (change)="onInputChange26($event)"
+            class="w-full h-fit text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+        </div>
+        <div *ngIf="isFileSelected1()" [ngClass]="{'hidden': isValidExtension(extension1)}"
+          class="text-red-500 text-md mt-2">
+          {{ 'add_model.extension' | translate }}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex gap-5 items-center">
+      <div class="w-[65%] mb-5">
+        <label for="extColorPrice" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title25' | translate }}
+        </label>
+        <input type="number" value="{{extColorPrice}}" name="extColorPrice" id="extColorPrice" placeholder=" €"
+          (change)="onInputChange25($event)"
+          class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+      </div>
+      <div class="w-[35%] mt-3">
+        <img class="w-16 h-16 rounded-full border-2 object-cover p-1 m-auto" [src]="imagePreview1" *ngIf="imagePreview1"
+          alt="Vista previa de la imagen">
+      </div>
+    </div>
+
+
+    <div class="">
+      <div class="md:w-1/2">
+        <label for="text" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title28' | translate }}
+        </label>
+        <div class="mt-3">
+          <input type="file" (change)="onInputChange27($event)" multiple accept="image/*"
+            class="w-full h-fit text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+        </div>
+        <div *ngIf="isFileSelected2()" [ngClass]="{'hidden': isValidExtension(extension2)}"
+          class="text-red-500 text-md mt-2">
+          {{ 'add_model.extension' | translate }}
+        </div>
+      </div>
+      <div class="md:flex hidden gap-4 mt-6">
+        <div *ngFor="let imagePreview of imagePreviews" class="md:mt-0 mt-5 md:w-1/4">
+          <img class="rounded-md border w-full h-44 object-cover bg-white" [src]="imagePreview" *ngIf="imagePreview"
+            alt="Vista previa de la imagen">
+        </div>
+      </div>
+
+      <div *ngIf="imagePreviews.length > 0" class="md:hidden justify-center items-center mt-5 mb-4">
+        <div class="image-viewer">
+          <img class="w-full md:h-[420px] object-cover" [src]="imagePreviews[currentImageIndex]" alt="Image">
+        </div>
+        <div class="flex gap-4 justify-center items-center mt-4">
+          <button class="w-1/2 flex items-center justify-center hover:scale-125 transition-all ease-in-out duration-300" (click)="previousImage()">
+            <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+            Anterior
+          </button>
+          <button class="w-1/2 flex items-center justify-center hover:scale-125 transition-all ease-in-out duration-300" (click)="nextImage()">
+            Siguiente
+            <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

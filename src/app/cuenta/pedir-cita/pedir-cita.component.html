@@ -1,0 +1,268 @@
+<div
+  class="flex flex-col gap-4 justify-center items-center mt-[200px] mb-[200px]"
+  *ngIf="isLoading"
+>
+  <svg
+    aria-hidden="true"
+    class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+    viewBox="0 0 100 101"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+      fill="currentColor"
+    />
+    <path
+      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+      fill="currentFill"
+    />
+  </svg>
+  <span class="text-2xl font-semibold text-gray-500 ml-4 mt-3"
+    >Cargando Configuraciones</span
+  >
+  <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container mx-auto" *ngIf="!isLoading">
+  <h1 class="text-2xl my-4">Hola, {{ usuario }}</h1>
+  <div class="font-bold my-8 flex justify-center flex-col">
+    <h2 class="flex justify-center">
+      Rellena este formulario para pedir cita!
+    </h2>
+    <p class="flex justify-center block text-gray-700 text-sm font-bold">
+      Los campos marcados con "<span class="text-red-500"> * </span>" son
+      obligatorios
+    </p>
+  </div>
+  <form class="max-w-md mx-auto" [formGroup]="pedirCitaForm">
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="numero de telefono"
+        >Elige la fecha <span class="text-red-500">*</span></label
+      >
+      <mat-form-field class="example-full-width">
+        <mat-label>Elige una fecha </mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [matDatepickerFilter]="myFilter"
+          (dateChange)="onDateChange($event)"
+          formControlName="fecha"
+        />
+        <div
+          *ngIf="
+            pedirCitaForm.controls['fecha'].invalid &&
+            pedirCitaForm.controls['fecha'].touched
+          "
+          class="text-red-500 text-xs"
+        >
+          Este campo es obligatorio.
+        </div>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="hora"
+        >Hora <span class="text-red-500">*</span></label
+      >
+      <select
+        required
+        formControlName="hora"
+        [disabled]="!dateSelected"
+        [ngClass]="{
+          'cursor-not-allowed bg-gray-300 pointer-events-none': !dateSelected,
+          'cursor-pointer bg-white': dateSelected
+        }"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="hora"
+      >
+        <option *ngFor="let hour of Hours" [value]="hour">{{ hour }}</option>
+      </select>
+    </div>
+
+    <div class="flex items-center justify-center flex-col">
+      <!--TODO:HORAS ITERAR LOS COCHES GUARDADOS-->
+      <h3 class="block text-gray-700 text-m font-bold my-4">
+        ¿Sobre que coche es la cita? <span class="text-red-500">*</span>
+      </h3>
+
+      <div class="grid gap-4 grid-cols-2">
+        <div
+          *ngFor="let model of coche"
+          (click)="selectCar(model)"
+          class="cursor-pointer relative"
+          [ngClass]="{
+            'border rounded border-black border-2': selectedCarId === model.id
+          }"
+        >
+          <img
+            class="w-80 h-56 object-cover bg-gray-200/60"
+            src="{{ model.model.image }}"
+            alt="Imagen coche"
+          />
+          <div class="bg-black text-white py-2 px-3">
+            <p class="font-semibold">{{ model.model.model }}</p>
+            <p class="text-sm">
+              Fecha de configuración:
+              {{ model.creationtime | date : "dd-MM-yyyy HH:mm" }}
+            </p>
+          </div>
+          <div
+            class="absolute top-4 right-4"
+            *ngIf="selectedCarId === model.id"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.49991 0.877045C3.84222 0.877045 0.877075 3.84219 0.877075 7.49988C0.877075 11.1575 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1575 14.1227 7.49988C14.1227 3.84219 11.1576 0.877045 7.49991 0.877045ZM1.82708 7.49988C1.82708 4.36686 4.36689 1.82704 7.49991 1.82704C10.6329 1.82704 13.1727 4.36686 13.1727 7.49988C13.1727 10.6329 10.6329 13.1727 7.49991 13.1727C4.36689 13.1727 1.82708 10.6329 1.82708 7.49988ZM10.1589 5.53774C10.3178 5.31191 10.2636 5.00001 10.0378 4.84109C9.81194 4.68217 9.50004 4.73642 9.34112 4.96225L6.51977 8.97154L5.35681 7.78706C5.16334 7.59002 4.84677 7.58711 4.64973 7.78058C4.45268 7.97404 4.44978 8.29061 4.64325 8.48765L6.22658 10.1003C6.33054 10.2062 6.47617 10.2604 6.62407 10.2483C6.77197 10.2363 6.90686 10.1591 6.99226 10.0377L10.1589 5.53774Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--TODO:HORAS ITERAR LOS COCHES GUARDADOS-->
+
+    <div class="my-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="Mas informacion"
+        >Mas informacion</label
+      >
+      <textarea
+        formControlName="texto"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="comentarios"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <div class="flex justify-center my-4">
+      <button
+        class="font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline hover:bg-green-700 hover:text-white"
+        [class.bg-green-500]="pedirCitaForm.valid"
+        [class.text-white]="pedirCitaForm.valid"
+        [class.bg-gray-500]="!pedirCitaForm.valid"
+        [class.text-gray-200]="!pedirCitaForm.valid"
+        [disabled]="!pedirCitaForm.valid"
+        (click)="formsValues()"
+      >
+        Pedir Cita
+      </button>
+    </div>
+  </form>
+</div>
+<!-- Dialog Confirm -->
+
+<div class="bg-black/30 backdrop-blur-sm fixed inset-0 flex items-center justify-center" *ngIf="showDialog">
+    <div
+      class="inline-block  bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all align-middle sm:max-w-lg sm:w-full"
+    >
+      <div class="text-center bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <h2 class="text-2xl font-bold p-2">¿Quieres confirmar tu cita?</h2>
+        <p class="text-m font-semibold">Estos son los datos de tu cita:</p>
+
+        <div class="text-left mt-2">
+          <ul>
+            <li>
+              Fecha:
+              <span class="font-bold">
+                {{ this.dateString | date : "dd-MM-yyyy" }}</span
+              >
+            </li>
+            <li>
+              Hora de asistencia:
+              <span class="font-bold">{{ this.selectedHour }}</span>
+            </li>
+            <li>
+              Marca Coche:
+              <span class="font-bold"
+                >{{ this.cocheCita?.brand?.brandName }}
+              </span>
+            </li>
+            <li>
+              Modelo Coche:
+              <span class="font-bold">{{ this.cocheCita?.model?.model }} </span>
+            </li>
+            <li>
+              Mensaje: <span class="font-bold">{{ this.texto }} </span>
+            </li>
+          </ul>
+          <p class="text-sm text-gray-500"></p>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button
+          type="button"
+          class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+          [class.opacity-50]="isLoadingDialog"
+          [disabled]="isLoadingDialog"
+          (click)="sumbitForm()"
+        >
+          <span *ngIf="!isLoadingDialog">Confirmar</span>
+          <div *ngIf="isLoadingDialog">
+            <svg
+            aria-hidden="true"
+            class="w-6 h-5 animate-spin text-white fill-black"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor"
+            />
+            <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill"
+            />
+          </svg>
+        </div>
+        </button>
+        <button
+          type="button"
+          class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"
+          (click)="showDialog = false"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+</div>
+<!-- Notificacion -->
+<div class="fixed bottom-0 right-0 m-6" *ngIf="showNotification">
+  <div
+    class="bg-green-100 border border-green-400 text-green-900 px-4 py-3 rounded relative"
+    role="alert"
+  >
+    <span class="block sm:inline p-8 text-center"
+      >Tu cita ha sido creada correctamente. <span class="font-bold"> Redireccionandote a tu cuenta...</span></span
+    >
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+      <svg
+        class="fill-current h-6 w-6 text-green-500"
+        role="button"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        (click)="showNotification = false"
+      >
+        <title>Close</title>
+        <path
+          d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+        />
+      </svg>
+    </span>
+  </div>
+</div>

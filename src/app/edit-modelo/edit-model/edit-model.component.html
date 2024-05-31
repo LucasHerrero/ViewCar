@@ -1,0 +1,54 @@
+<div class=" ">
+    <div class="bg-white p-5 rounded shadow-lg max-w-3xl mx-auto">
+        <form class="p-5" (submit)="saveModel()" #form="ngForm">
+            <div class="mb-5">
+                <label for="brandName" class="block text-sm font-medium text-gray-700">Marca del modelo</label>
+                <input type="text" id="brandName" name="brandName" [(ngModel)]="data.brand.brandName" disabled
+                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-gray-200 text-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div class="mb-5">
+                <label for="modelName" class="block text-sm font-medium text-gray-700">Nombre del modelo</label>
+                <input type="text" id="modelName" name="modelName" [(ngModel)]="data.model" required
+                    #modelName="ngModel"
+                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <div *ngIf="modelName.invalid && modelName.touched" class="text-red-500 mt-2 text-sm">Este campo es
+                    obligatorio</div>
+            </div>
+            <div class="mb-5">
+                <label for="modelPrice" class="block text-sm font-medium text-gray-700">Precio del modelo</label>
+                <input type="text" id="modelPrice" name="modelPrice" [(ngModel)]="data.price" required
+                    #modelPrice="ngModel"
+                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <div *ngIf="modelPrice.invalid && modelPrice.touched" class="text-red-500 mt-2 text-sm">Este campo es
+                    obligatorio</div>
+            </div>
+            <div class="mb-5">
+                <label for="modelDescription" class="block text-sm font-medium text-gray-700">Descripción del
+                    modelo</label>
+                <textarea id="modelDescription" name="modelDescription" [(ngModel)]="data.description" required
+                    #modelDescription="ngModel"
+                    class="mt-1 block w-full h-32 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <div *ngIf="modelDescription.invalid && modelDescription.touched" class="text-red-500 mt-2 text-sm">Este
+                    campo es obligatorio</div>
+            </div>
+            <div class="mb-5">
+                <label for="modelImage" class="block text-sm font-medium text-gray-700">Imagen del modelo</label>
+                <input type="file" id="modelImage" name="modelImage" (change)="onFileChange($event)"
+                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <img [src]="imagePreview || data.image" alt="Image preview" class="mt-2 h-32 w-full object-cover">
+            </div>
+            <div class="flex justify-between">
+                <button type="button"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-900"
+                    (click)="cancel()">
+                    Cancelar
+                </button>
+
+                <button type="submit" [disabled]="form.invalid"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="mt-10">
+  <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+  <div class="flex text-3xl">
+    <span class="font-extrabold text-6xl pr-1">4.</span>
+    <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'add_model.title15' | translate }}</h1>
+  </div>
+  <form class="space-y-4 pt-12">
+    <!-- Campo para el nombre de la marca -->
+    <div class="mb-5">
+      <label for="motorName" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title16' | translate }}
+      </label>
+      <input type="text" value="{{motorName}}" name="motorName" id="motorName" placeholder="1.0 TSI, 2.0 TDI, etc." (change)="onInputChange15($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="motorPrice" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.titleprecio' | translate }}
+      </label>
+      <input type="text" value="{{motorPrice}}" name="motorPrice" id="motorPrice" placeholder=" €" (change)="onInputChange17($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+
+    <div class="mb-5">
+      <label for="motorPower" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title17' | translate }}
+      </label>
+      <input type="text" name="motorPower" value="{{motorPower}}" id="motorPower" placeholder="110CV, 150CV, etc." (change)="onInputChange18($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="motorFuel" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title18' | translate }}
+      </label>
+      <select type="text" name="motorFuel" value="{{motorFuel}}" id="motorFuel" placeholder="Gasolina, Diésel, etc." (change)="onInputChange19($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" >
+        <option value="Diesel">Diesel</option>
+        <option value="Gasolina">Gasolina</option>
+        <option value="Híbrido">Híbrido</option>
+      </select>
+    </div>
+
+    <div class="mb-5">
+      <label for="motorEmission" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title19' | translate }}
+      </label>
+      <input type="text" name="motorEmission" value="{{motorEmission}}" id="motorEmission" placeholder="g/km" (change)="onInputChange20($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+    <div class="mb-5">
+      <label for="motorConsumption" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title20' | translate }}
+      </label>
+      <input type="text" name="motorConsumption" value="{{motorConsumption}}" id="motorConsumption" placeholder="5.5l/100km, 6.5l/100km, etc."
+        (change)="onInputChange21($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="motorTransmission" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title21' | translate }}
+      </label>
+      <select type="text" name="motorTransmission" value="{{motorTransmission}}" id="motorTransmission" placeholder="Manuel, Automático, etc." (change)="onInputChange22($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" >
+        <option value="Manual">Manual</option>
+        <option value="Automático">Automático</option>
+      </select>
+    </div>
+
+    <div class="mb-5">
+      <label for="motorDescription" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title22' | translate }}
+      </label>
+      <input type="text" name="motorDescription" value="{{motorDescription}}" id="motorDescription" placeholder="Información adicional al motor"
+        (change)="onInputChange23($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+  </form>
+
+
+</div>

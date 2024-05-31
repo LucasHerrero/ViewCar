@@ -1,0 +1,7 @@
+header {
+    transition: top 0.3s;
+}
+
+header.scrolled {
+    top: -100%;
+}

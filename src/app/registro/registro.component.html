@@ -1,0 +1,111 @@
+<div class="flex md:flex-row flex-col md:h-screen">
+
+  <div class="md:w-1/2">
+    <img class="h-full object-cover -mt-20"
+      src="https://www.audi.es/content/dam/nemo/es/home/Destacados/2023/Q4-etron_1920x1080.jpg?imwidth=1920"
+      alt="Audi Q4 e-tron 2023">
+  </div>
+
+
+  <div class="flex flex-col md:w-1/2 px-10 items-center justify-center">
+    <button (click)="openDialogLogin()"
+      class="font-semibold absolute right-10 top-24 rounded-md hover:bg-slate-200/30 p-3" href="">{{ 'register.login' |
+      translate }}</button>
+
+    <form class="text-center md:-mt-36 mt-16 md:w-[60%]" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-2xl font-bold">{{ 'register.title' | translate }}</h2>
+      <p>{{ 'register.subtitle' | translate }}</p>
+
+      <div class="mt-8">
+        <div class="flex gap-3">
+          <!-- Nombre -->
+          <input formControlName="firstName" class="w-1/2 border text-sm border-gray-300 rounded-md p-2 mt-3"
+            type="text" name="firstName" id="firstName" placeholder="{{ 'register.name' | translate }}"
+            [ngClass]="{'input-error': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
+
+          <!-- Apellidos -->
+          <input formControlName="secondLastName" class="w-1/2 border text-sm border-gray-300 rounded-md p-2 mt-3"
+            type="text" name="secondLastName" id="secondLastName" placeholder="{{ 'register.lastName' | translate }}"
+            [ngClass]="{'input-error': registerForm.get('secondLastName')?.invalid && registerForm.get('secondLastName')?.touched}">
+        </div>
+
+        <!-- Email -->
+        <input formControlName="email" class="border text-sm border-gray-300 rounded-md p-2 w-full mt-3" type="email"
+          name="email" id="email" placeholder="{{ 'register.email' | translate }}"
+          [ngClass]="{'input-error': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
+
+        <!-- Telefono-->
+        <input formControlName="phone" class="border text-sm border-gray-300 rounded-md p-2 w-full mt-3" type="tel"
+          name="phone" id="phone" placeholder="{{ 'register.phone' | translate }}"
+          [ngClass]="{'input-error': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}">
+
+        <!-- Contraseña -->
+        <input formControlName="password" class="border text-sm border-gray-300 rounded-md p-2 w-full mt-3"
+          type="password" name="password" id="password" placeholder="{{ 'register.password' | translate }}"
+          [ngClass]="{'input-error': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+
+        <!-- Repetir contraseña -->
+        <input formControlName="password2" class="border text-sm border-gray-300 rounded-md p-2 w-full mt-3"
+          type="password" name="password2" id="password2" placeholder="{{ 'register.confirmPassword' | translate }}"
+          [ngClass]="{'input-error': registerForm.get('password2')?.invalid && registerForm.get('password2')?.touched}">
+
+        <!-- Mensajes de error -->
+        <div class="text-red-500 text-sm mt-2">
+          <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+            {{ 'register.errors.name' | translate }}
+          </div>
+          <div
+            *ngIf="registerForm.controls['secondLastName'].invalid && registerForm.controls['secondLastName'].touched">
+            {{ 'register.errors.lastName' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched">
+            {{ 'register.errors.email' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].value != ''">
+            {{ 'register.errors.emailInvalid' | translate }}
+          </div>
+            <div *ngIf="registerForm.controls['phone'].errors?.['required'] && registerForm.controls['phone'].touched">
+            {{ 'register.errors.phone' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['phone'].invalid && registerForm.controls['phone'].value != ''">
+            {{ 'register.errors.phoneInvalid' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched">
+            {{ 'register.errors.password' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].value != ''">
+            {{ 'register.errors.passwordInvalid' | translate }}
+          </div>
+          <div *ngIf="registerForm.controls['password2'].errors?.['required'] && registerForm.controls['password2'].touched">
+            {{ 'register.errors.confirmPassword' | translate }}
+          </div>
+          <div
+            *ngIf="registerForm.errors?.['notSame'] && registerForm.controls['password'].touched && registerForm.controls['password2'].touched">
+            {{ 'register.errors.confirmPasswordInvalid' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de envío -->
+      <button [disabled]="registerForm.invalid"
+        class="mt-4 bg-black rounded-md w-full text-white font-medium py-2 disabled:bg-black/40 disabled:cursor-not-allowed">
+        {{ 'register.register' | translate }}
+      </button>
+
+      <!-- Términos y Política de privacidad -->
+      <div class="mt-4">
+        <p class="px-8 text-center text-xs text-muted-foreground">
+          {{ 'register.conditions' | translate }}
+          <a href="/terms" class="underline underline-offset-4 hover:text-primary">
+            {{ 'register.terms' | translate }}
+          </a>
+          y
+          <a href="/privacy" class="underline underline-offset-4 hover:text-primary">
+            {{ 'register.privacy' | translate }}
+          </a>
+          .
+        </p>
+      </div>
+
+    </form>
+  </div>

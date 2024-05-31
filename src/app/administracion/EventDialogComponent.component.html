@@ -1,0 +1,20 @@
+<div class="p-6 bg-white rounded-lg shadow-lg">
+  <h2 class="text-2xl font-bold mb-4">Detalles de la Cita</h2>
+  <div class="mb-4">
+    <ul class="list-disc list-inside text-gray-700">
+      <li>{{data.event.nombre}}</li>
+      <li>{{data.event.correo}}</li>
+      <li>{{data.event.hora}}</li>
+      <li>{{data.event.brand}}</li>
+      <li>{{data.event.model}}</li>
+      <li>{{data.event.price}}€</li>
+    </ul>
+    <!-- Agrega más detalles aquí -->
+  </div>
+  <div class="flex justify-start">
+    <button class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" (click)="prueba()">Ver Configuración</button>
+  </div>
+  <div class="flex justify-end">
+    <button class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" (click)="onNoClick()">Cerrar</button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="py-16 bg-gray-100 rounded-md">
+  <h1 class="font-bold text-center text-2xl mb-8">
+    Precio total del vehículo: {{ totalPrice | number:'1.2-2' }} €</h1>
+
+  <form [formGroup]="form" class="flex flex-col items-center space-y-4 p-4 bg-gray-100" (ngSubmit)="calculate()">
+    <label class="w-full text-center">
+      Entrada inicial en €:
+      <input type="number" formControlName="entrada" min="0" pattern="^[0-9]*$"
+        class="p-2 border border-gray-300 rounded" />
+      <div *ngIf="form.get('entrada')?.errors?.['min']" class="text-gray-500">
+        <p>La entrada inicial debe ser el 10% del precio total del vehículo o mayor, en este caso {{minEntrada}}€</p>
+      </div>
+      <div *ngIf="form.get('entrada')?.errors?.['max']" class="text-gray-500">
+        <p>La entrada inicial no puede ser mayor al 20% del precio total, en este caso {{maxEntrada}}.</p>
+      </div>
+    </label>
+
+    <label class="w-full text-center">
+      Número de meses:
+      <input type="number" formControlName="meses" min="48" pattern="^[0-9]*$"
+        class="p-2 border border-gray-300 rounded" />
+      <div *ngIf="form.get('meses')?.errors?.['min']" class="text-gray-500">
+        <p>El mínimo para financiar son 48 meses</p>
+      </div>
+    </label>
+
+    <div class="w-full text-center">
+      <button
+        class="w-[50%] text-lg bg-[#C2CACF] text-black/70 font-bold rounded-full mt-5 py-3 items-center justify-center gap-2"
+        type="submit" [disabled]="!form.valid">Calcular
+      </button>
+      <p class="w-full text-center" *ngIf="hasCalculated && form.valid" class="font-bold text-center mt-6 mb-3">Cuota:
+        {{ calculate() }} € al mes</p>
+
+      <button (click)="onInterestButtonclick()" *ngIf="showButton"
+        class="w-[65%] bg-[#C2CACF] text-black/90 text-lg font-bold rounded-full mt-5 py-3 items-center justify-center gap-2">Me
+        interesa</button>
+    </div>
+    <p class="text-center text-xs mb-4 text-gray-600 w-[80%]">
+      Por favor tenga en cuenta que esta financiación es orientativa. <br>
+      Cuando solicite una cita, le proporcionaremos los datos exactos y personalizados para la financiación de su
+      vehículo <br>Agradecemos su comprensión.
+    </p>
+  </form>
+</div>

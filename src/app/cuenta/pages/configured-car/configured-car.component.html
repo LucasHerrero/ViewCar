@@ -1,0 +1,227 @@
+<div class="flex flex-col gap-4 justify-center items-center mt-[200px] mb-[200px]" *ngIf="isLoading">
+  <svg aria-hidden="true" class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+      fill="currentColor" />
+    <path
+      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+      fill="currentFill" />
+  </svg>
+  <span class="text-2xl font-semibold text-gray-500 ml-4 mt-3">Cargando Configuración</span>
+  <span class="sr-only">Loading...</span>
+</div>
+
+<div class="w-[90%] m-auto pt-4 pb-16" *ngIf="!isLoading">
+  <div class="mt-10">
+
+    <div class="flex text-3xl">
+      <span class="font-extrabold text-6xl pr-1"></span>
+      <h1 class="md:pt-2.5 md:pl-0 pl-2 font-semibold">{{'resume.title' | translate}} <strong>{{
+          car.model.brand.brandName
+          }} {{ car.model.model }}</strong></h1>
+    </div>
+  </div>
+
+  <div class="flex md:flex-row flex-col-reverse mt-10 gap-8">
+    <div class="md:w-[70%] w-full">
+      <div class="relative image-viewer mb-8">
+        <img class="w-full md:h-[420px] object-cover" [src]="car.pack.imageList[currentImageIndex]" alt="Image">
+        <button class="absolute left-5 top-1/2 hover:scale-125 transition-all ease-in-out duration-300"
+          (click)="previousImage()">
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button class="absolute right-5 top-1/2 hover:scale-125 transition-all ease-in-out duration-300"
+          (click)="nextImage()">
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+
+
+      <!-- INFO DEBAJO DEL COCHE -->
+      <p class="mt-2 font-medium">{{ car.model.brand.brandName }} {{ car.model.model }}
+        {{ car.pack.bumper }} {{ car.engine.name }} ({{ car.engine.power }} CV)
+        {{ car.engine.transmission }} | {{ car.engine.fuel }} |
+        {{ 'resume.consumption' | translate }} {{ car.engine.consumption }} l/100km
+        {{ 'resume.emisions' | translate }}: {{ car.engine.emission }} g/km
+      </p>
+
+
+      <div class="mt-10">
+        <div class="mt-6">
+          <span class="font-semibold text-2xl">1. {{ 'resume.package' | translate }} </span>
+
+
+          <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+            <p class="font-semibold text-lg flex justify-between pb-3">{{ car.pack.name }}
+              <span>{{ car.pack.model.price | currency: 'EUR'}}</span>
+            </p>
+            <hr>
+            <div class="flex justify-between">
+              <div class="justify-between mt-5">
+                <p class="font-semibold">{{ 'resume.bodywork' | translate }}</p>
+                <p>{{ car.pack.bodywork }}</p>
+              </div>
+              <div class="justify-between mt-5">
+                <p class="font-semibold">{{ 'resume.lights' | translate }}</p>
+                <p>{{ car.pack.headlights }}</p>
+              </div>
+              <div class="justify-between mt-5">
+                <p class="font-semibold">{{ 'resume.seats' | translate }}</p>
+                <p>{{ car.pack.seats }}</p>
+              </div>
+
+            </div>
+
+            <ul class="mt-5">
+              <li *ngFor="let item of car.pack.description.split(',')">{{item}}</li>
+            </ul>
+
+
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <span class="font-semibold text-2xl">2. {{ 'resume.motor' | translate }} </span>
+          <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+            <p class="font-semibold text-lg flex justify-between pb-3"> {{ car.engine.name }}
+              <span>{{ car.engine.price | currency: 'EUR'}}</span>
+            </p>
+            <hr>
+            <div class="flex justify-between">
+              <div class="justify-between mt-5">
+                <p class="font-semibold">Potencia</p>
+                <p>{{ car.engine.power }} CV</p>
+              </div>
+              <div class="justify-between mt-5">
+                <p class="font-semibold">Transmisión</p>
+                <p>{{ car.engine.transmission }}</p>
+              </div>
+              <div class="justify-between mt-5">
+                <p class="font-semibold">Consumo</p>
+                <p>{{ car.engine.consumption }} l/100km</p>
+              </div>
+              <div class="justify-between mt-5">
+                <p class="font-semibold">Emisiones</p>
+                <p>{{ car.engine.emission }} g/km</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <span class="font-semibold text-2xl">3. {{ 'resume.extColor' | translate }}</span>
+
+
+          <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+            <p class="font-semibold text-lg flex justify-between pb-3"> {{ car.extColor.color }}
+              <span>{{ car.extColor.price | currency: 'EUR'}}</span>
+            </p>
+
+            <div class="flex justify-center">
+              <img class="w-16 h-16 rounded-full border-2 object-cover p-1" [src]="car.extColor.circulo" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <span class="font-semibold text-2xl">4. {{ 'resume.tapiceria' | translate }} </span>
+
+          <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+            <p class="font-semibold text-lg flex justify-between pb-3">
+              {{ car.intColor.color }}
+              <span *ngIf="car.intColor.price == 0; else priceBlock">{{ 'resume.cost' | translate }}</span>
+              <ng-template #priceBlock>{{ car.intColor.price | currency: 'EUR'}}</ng-template>
+            </p>
+            <div class="flex justify-center">
+              <img class="w-16 h-16 rounded-full border-2 object-cover p-1" [src]="car.intColor.circulo" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <span class="font-semibold text-2xl">5. {{ 'resume.tires' | translate }}
+
+          </span>
+          <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+            <p class="font-semibold text-lg flex justify-between">
+              {{ car.tire.name }}
+              <span>{{ car.tire.price | currency: 'EUR' }}</span>
+            </p>
+            <p>{{ car.tire.description }}</p>
+            <div class="flex justify-center mt-4">
+              <img class="w-16 h-16 rounded-full border-2 object-cover p-1" src="{{ car.tire.circulo }}" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="md:w-[30%] w-full">
+      <p class="font-semibold text-xl">{{ car.model.brand.brandName }}</p>
+      <p class="font-black text-5xl">{{ car.model.model }} {{ car.pack.bumper }}</p>
+      <div class="rounded-md bg-[#F8F8F6] p-5 mt-6">
+        <p class="font-semibold text-xl pb-4">{{ 'resume.desglose' | translate }}</p>
+        <hr>
+        <div class="mt-5">
+          <div class="flex justify-between text-base">
+            <p>Precio base</p>
+            <p class="font-semibold">{{ car.model.price | currency: 'EUR' }}</p>
+          </div>
+          <div class="flex justify-between text-base">
+            <p>Paquete</p>
+            <p class="font-semibold">{{ car.pack.price | currency: 'EUR' }}</p>
+          </div>
+          <div class="flex justify-between text-base">
+            <p>Motor</p>
+            <p class="font-semibold">{{ car.engine.price | currency: 'EUR' }}</p>
+          </div>
+          <div class="flex justify-between text-base">
+            <p>Color exterior</p>
+            <p class="font-semibold">{{ car.extColor.price | currency: 'EUR' }}</p>
+          </div>
+          <div class="flex justify-between text-base">
+            <p>Tapicería</p>
+            <p class="font-semibold">{{ car.intColor.price | currency: 'EUR' }}</p>
+          </div>
+          <div class="flex justify-between text-base">
+            <p>Llantas</p>
+            <p class="font-semibold">{{ car.tire.price | currency: 'EUR' }}</p>
+          </div>
+          <hr class="my-4">
+          <div class="flex justify-between text-lg">
+            <p>{{ 'resume.precioFinal' | translate }}</p>
+            <p class="font-semibold">{{ car.price | currency: 'EUR' }}</p>
+          </div>
+        </div>
+        <div class="m-auto flex flex-col justify-center items-center">
+          <button routerLink="/pedir-cita"
+            class="max-w-[200px] w-[85%] text-sm bg-[#C2CACF] text-black/70 font-semibold rounded-full mt-2 py-3 flex items-center justify-center gap-2">
+            <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
+              style="color: currentcolor;">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M2.5 3.25C2.5 1.45507 3.95507 0 5.75 0H6.25C8.04493 0 9.5 1.45507 9.5 3.25V3.75C9.5 5.54493 8.04493 7 6.25 7H5.75C3.95507 7 2.5 5.54493 2.5 3.75V3.25ZM5.75 1.5C4.7835 1.5 4 2.2835 4 3.25V3.75C4 4.7165 4.7835 5.5 5.75 5.5H6.25C7.2165 5.5 8 4.7165 8 3.75V3.25C8 2.2835 7.2165 1.5 6.25 1.5H5.75ZM1.5 14.5V13.1709C2.31958 11.5377 3.99308 10.5 5.82945 10.5H6.17055C8.00692 10.5 9.68042 11.5377 10.5 13.1709V14.5H1.5ZM5.82945 9C3.35483 9 1.10604 10.4388 0.0690305 12.6857L0 12.8353V13V15.25V16H0.75H11.25H12V15.25V13V12.8353L11.931 12.6857C10.894 10.4388 8.64517 9 6.17055 9H5.82945ZM15.931 12.6857C15.3706 11.4715 14.4561 10.4931 13.3439 9.85058L12.5935 11.1494C13.399 11.6148 14.0681 12.3101 14.5 13.1709V14.5H13.5V16H15.25H16V15.25V13V12.8352L15.931 12.6857ZM11.25 0H10.5V1.5H11.25C12.2165 1.5 13 2.2835 13 3.25V3.75C13 4.7165 12.2165 5.5 11.25 5.5H10.5V7H11.25C13.0449 7 14.5 5.54493 14.5 3.75V3.25C14.5 1.45507 13.0449 0 11.25 0Z"
+                fill="currentColor"></path>
+            </svg>
+
+            Pide tu cita aqui!
+          </button>
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

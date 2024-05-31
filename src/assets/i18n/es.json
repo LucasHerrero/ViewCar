@@ -1,0 +1,254 @@
+{
+  "configurator": {
+    "brands": "Marcas",
+    "models": "Modelos",
+    "packages": "Paquetes",
+    "engine": "Motor",
+    "exteriorColor": "Color exterior",
+    "interiorColor": "Color interior",
+    "tires": "Llantas",
+    "optional": "Opcionales",
+    "resume": "Resumen",
+    "back": "Atras",
+    "next": "Siguiente"
+  },
+  "brands": {
+    "welcome": "Bienvenido al configurador",
+    "start": "Empieza eligiendo tu marca favorita",
+    "disponible": "marcas disponibles",
+    "selectBrand": "Selecciona una marca"
+  },
+  "models": {
+    "start": "Elige tu modelo favorito",
+    "disponible": "modelos disponibles",
+    "selectModel": "Selecciona un modelo",
+    "from": "Desde",
+    "emission": "Emisiones combinadas de CO₂",
+    "consumption": "Consumo combinado de combustible",
+    "order": {
+      "newer": "Más nuevo",
+      "ascendent": "Ascendente",
+      "descendent": "Descendente"
+    },
+    "ordenar": "Ordenar"
+  },
+  "packages": {
+    "start": "Elige un paquete para el",
+    "disponible": "paquetes disponibles",
+    "selectPackage": "Selecciona un paquete",
+    "from": "Desde",
+    "lights": "Faros",
+    "seats": "Asientos",
+    "bodywork": "Carrocería",
+    "info": "Más información"
+  },
+  "exteriorColor": {
+    "selectExterior": "Selecciona el color exterior para el",
+    "selectColor": "Selecciona un color",
+    "availableVariants": "colores disponibles"
+  },
+  "motor": {
+    "welcome": "Bienvenido al configurador de Viewcar",
+    "selectMotor": "Selecciona el motor para el",
+    "filters": "Filtros",
+    "availableVariant": "Motor disponible",
+    "availableVariants": "Motores disponibles",
+    "potencia": "Potencia",
+    "combustible": "Tipo de combustible",
+    "emision": "Emisión",
+    "consumo": "Consumo",
+    "transmision": "Transmisión",
+    "ver_mas": "Ver más",
+    "precio": "Precio"
+  },
+  "interiorColor": {
+    "selectInterior": "Selecciona el interior para el",
+    "filters": "Filtros",
+    "availableVariants": "variante de interior disponible",
+    "selectColor": "Selecciona un color"
+  },
+  "tires": {
+    "welcome": "Bienvenido al configurador",
+    "filters": "Filtros",
+    "availableVariants": "llantas disponibles",
+    "selectTire": "Selecciona unas llantas para el",
+    "price": "Precio",
+    "color": "Color",
+    "inches": "Pulgadas",
+    "material": "Material",
+    "ver_mas": "Ver más"
+  },
+
+  "general": {
+    "welcome": "Bienvenido al configurador de Viewcar",
+    "selectInterior": "Selecciona el interior para el",
+    "filters": "Filtros",
+    "availableVariants": "variante de interior disponible",
+    "selectColor": "Selecciona un color",
+    "price": "Precio"
+  },
+  "footer": {
+    "text": "Visita nuestras redes sociales y entérate de todo lo último en el mundo del automóvil, inspírate con los modelos más buscados y mucho más.",
+    "brands": "Marcas",
+    "location": "Ubicación",
+    "policy": "Políticas",
+    "contact": "Contacto",
+    "where": "¿Dónde estamos?",
+    "legal": "Aviso legal",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "use": "Condiciones de uso",
+    "copyright": "Todos los derechos reservados."
+  },
+  "register": {
+    "title": "Crear una cuenta",
+    "subtitle": "Introduce tus datos para registrarte",
+    "name": "Nombre",
+    "lastName": "Apellidos",
+    "email": "Correo electrónico",
+    "phone": "Teléfono Móvil",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "register": "Crear cuenta",
+    "login": "Iniciar sesión",
+    "errors": {
+      "name": "El nombre es obligatorio",
+      "lastName": "Los apellidos son obligatorios",
+      "email": "El correo electrónico es obligatorio",
+      "emailInvalid": "El correo electrónico no es válido",
+      "phone": "El teléfono es obligatorio",
+      "phoneInvalid": "El teléfono no es válido",
+      "password": "La contraseña es obligatoria",
+      "passwordInvalid": "La contraseña debe tener al menos 8 caracteres",
+      "confirmPassword": "La confirmación de la contraseña es obligatoria",
+      "confirmPasswordInvalid": "Las contraseñas no coinciden"
+    },
+    "conditions": "Al hacer clic en 'Crear cuenta', aceptas nuestros",
+    "terms": "Términos de servicio",
+    "and": "y",
+    "privacy": "Política de privacidad"
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "subtitle": "Introduce tus datos para iniciar",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
+    "conditions": "Al hacer clic en 'Iniciar sesión', aceptas nuestros",
+    "terms": "Términos de servicio",
+    "and": "y",
+    "privacy": "Política de privacidad"
+  },
+  "header": {
+    "marcas": "Nuestras Marcas",
+    "modelos": "Modelos",
+    "configurador": "Configura Tu Coche",
+    "contacto": "Contacto",
+    "noticias": "Noticias",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "cuenta": "Mi cuenta",
+    "ajustes": "Ajustes",
+    "vehiculos configurados": "Vehículos configurados",
+    "cerrar sesion": "Cerrar sesión",
+    "hola bienvenido": "Hola, bienvenido"
+  },
+
+  "admin": {
+    "bienvenido": "¡Bienvenido/a",
+    "configuraciones": "Aquí podrás ver los vehiculos que has configurado",
+    "vehiculos": "Últimos vehiculos configurados"
+  },
+
+  "buscar": {
+    "buscar": "Buscar",
+    "buscar...": "Buscar...",
+    "error": "No se han encontrado resultados para la búsqueda "
+
+  },
+
+  "brand_section": {
+    "title": "Nuestras marcas"
+  },
+
+  "add_model": {
+    "title1": "Creador de modelos",
+    "title2": "Empieza eligiendo la marca",
+    "title3": "Escribe la nueva marca",
+    "title4": "Añade el modelo que quieres crear",
+    "title5": "Escribe el nombre del modelo",
+    "title6": "Dime el precio de este modelo",
+    "title7": "Emisiones combinadas de CO₂",
+    "title8": "Consumo combinado de combustible",
+
+    "title9": "Crea el nuevo paquete aqui ",
+    "title10": "Escribe el nombre del paquete",
+    "titleprecio": "Precio",
+    "title11": "Faros",
+    "title12": "Carrocería",
+    "title13": "Asientos",
+    "title14": "Descripcion",
+
+
+    "title15": "Añade el nuevo motor",
+    "title16": "Escribe el nombre del motor",
+    "title17": "Potencia",
+    "title18": "Tipo de combustible",
+    "title19": "Emisión",
+    "title20": "Consumo",
+    "title21": "Transmisión",
+    "title22": "Mas información",
+
+    "title23": "Añade el nuevo color exterior",
+    "title24": "Nombre del color exterior",
+    "title25": "Precio",
+    "title26": "Blanco, Negro, Gris, etc",
+    "title27": "Añade la imagen del color",
+    "title28": "Añade las imágenes del coche en el color seleccionado",
+
+    "title29": "Añade el nuevo color interior",
+    "title30": "Nombre del color interior",
+    "title31": "Precio",
+    "title32": "Añade la imagen del interior del coche",
+
+    "extension": "El archivo debe ser de tipo .png, .webp, .jpg o .jpeg",
+
+    "title33": "Dime las llantas disponibles",
+    "title34": "Escribe el nombre de la llanta",
+    "title35": "Pulgadas",
+    "title36": "Material",
+    "title37": "Color",
+    "title38": "Añade las imagenes de las llantas",
+    "title39": "Precio",
+    "title40": "Descripción",
+    "title41": "Añade la imagen del seleccionador de la llanta"
+
+  },
+  "resume": {
+    "title": "Resumen de tu configuración",
+    "consumption": "WLTP:Aviso de la etapa del modelo, consumo:",
+    "emisions": "y emisiones",
+    "package": "Paquete seleccionado",
+    "bodywork":"Carrocería",
+    "lights":"Faros",
+    "seats":"Asientos",
+    "info":"Más información",
+    "motor": "Motor seleccionado",
+    "power": "Potencia",
+    "transmision":"Transmisión",
+    "consumo": "Consumo",
+    "emision": "Emisiones",
+    "extColor": "Color exterior seleccionado",
+    "tapiceria": "Tapiceria seleccionada",
+    "cost": "Sin coste adicional",
+    "tires": "Llantas seleccionadas",
+    "desglose": "Desglose del precio",
+    "precioFinal": "Precio final"
+}
+
+
+
+
+
+}

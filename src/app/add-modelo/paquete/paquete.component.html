@@ -1,0 +1,118 @@
+<div class="mt-10">
+  <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+  <div class="flex text-3xl">
+    <span class="font-extrabold text-6xl pr-1">3.</span>
+    <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'add_model.title9' | translate }}</h1>
+  </div>
+  <form class="space-y-4 pt-12">
+    <!-- Campo para el nombre de la marca -->
+    <div class="flex gap-6">
+      <div class="w-[60%] mb-5">
+        <label for="nombrePaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title10' | translate }}
+        </label>
+        <input type="text" value="{{paqueteName}}" name="nombrePaquete" id="nombrePaquete"
+          placeholder="R-line, GTI, R, etc." (change)="onInputChange8($event)"
+          class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+      </div>
+
+      <!-- Campo para imagen -->
+      <div class="flex-column w-[40%] gap-4">
+        <div>
+          <label for="imagen" class="mb-3 block text-xl font-medium text-[#07074D]">
+            Imagenes del paquete
+          </label>
+          <input type="file" (change)="onInputChange9($event)" multiple accept="image/*"
+            class="w-full text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+          <div *ngIf="isFileSelected()" [ngClass]="{'hidden': isValidExtension(extension)}"
+            class="text-red-500 text-md mt-2">
+            {{ 'add_model.extension' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex hidden gap-4">
+      <div *ngFor="let imagePreview of imagePreviews" class="md:mt-0 mt-5 md:w-1/4">
+        <img class="rounded-md border w-full h-44 object-cover bg-white" [src]="imagePreview" *ngIf="imagePreview"
+          alt="Vista previa de la imagen">
+      </div>
+    </div>
+
+    <!-- Carrousel imagenes para movil con botones para siguiente o anterior para ver las imagenes -->
+    <div *ngIf="imagePreviews.length > 0" class="md:hidden justify-center items-center mt-5 mb-4">
+      <div class="image-viewer">
+        <img class="w-full md:h-[420px] object-cover" [src]="imagePreviews[currentImageIndex]" alt="Image">
+      </div>
+      <div class="flex gap-4 justify-center items-center mt-4">
+        <button class="w-1/2 flex items-center justify-center hover:scale-125 transition-all ease-in-out duration-300" (click)="previousImage()">
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+          Anterior
+        </button>
+        <button class="w-1/2 flex items-center justify-center hover:scale-125 transition-all ease-in-out duration-300" (click)="nextImage()">
+          Siguiente
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Campo para el precio -->
+    <div class="mb-5">
+      <label for="precioPaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.titleprecio' | translate }}
+      </label>
+      <input type="text" value="{{paquetePrice}}" name="precioPaquete" id="precioPaquete" placeholder=" €"
+        (change)="onInputChange10($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <!-- Campo para luces -->
+    <div class="mb-5">
+      <label for="lucesPaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title11' | translate }}
+      </label>
+      <input type="text" value="{{paqueteLight}}" name="lucesPaquete" id="lucesPaquete" placeholder="Led, Xenon, etc."
+        (change)="onInputChange11($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <!-- Campo para carrocería -->
+    <div class="mb-5">
+      <label for="carroceriaPaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title12' | translate }}
+      </label>
+      <input type="text" value="{{paqueteBodywork}}" name="carroceriaPaquete" id="carroceriaPaquete"
+        placeholder="Deportiva, Confort, etc." (change)="onInputChange12($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <!-- Campo para asientos -->
+    <div class="mb-5">
+      <label for="asientosPaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title13' | translate }}
+      </label>
+      <input type="text" value="{{paqueteSeats}}" name="asientosPaquete" id="asientosPaquete"
+        placeholder="Bucket, Deportivo, etc." (change)="onInputChange13($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <!-- Campo para llantas -->
+    <div class="mb-5">
+      <label for="llantasPaquete" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title14' | translate }}
+      </label>
+      <input type="text" value="{{paqueteDescription}}" name="llantasPaquete" id="llantasPaquete"
+        placeholder="Llantas de aleación ligera de Audi Sport de 19, con neumáticos 245/35 R19, etc."
+        (change)="onInputChange14($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+  </form>
+</div>

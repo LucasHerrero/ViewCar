@@ -1,0 +1,188 @@
+<h1 class="text-4xl font-extrabold text-center mt-20 tracking-tighter">Noticias Destacadas</h1>
+<div class="block mt-10 py-10">
+
+  <div>
+    <div
+    class="flex flex-col gap-4 justify-center items-center mt-[150px]"
+    *ngIf="isLoadingAudi"
+  >
+    <svg
+      aria-hidden="true"
+      class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+    <span class="text-xl font-semibold text-gray-500 ml-4"
+      >Cargando Noticias</span
+    >
+    <span class="sr-only">Loading...</span>
+  </div>
+    <!-- <div class="p-6 rounded-lg bg-slate-300" *ngIf="!isLoadingAudi">
+      <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://s.yimg.com/uu/api/res/1.2/pIKkkPvtWGOP5i8GxSEQaA--~B/aD0yNzYxO3c9NDU3NDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-02/6ee3def0-6b08-11eb-bfbf-a58e58381e9c.cf.jpg" alt="Image Size 720x400">
+      <h2 class="text-lg text-gray-900 font-medium title-font mb-4" [innerHTML]="noticiasAudi?.data?.[0]?.title"></h2>
+      <p [innerHTML]="noticiasAudi?.data?.[0]?.description"></p>
+      <p class="leading-relaxed text-base">{{ noticiasAudi?.data?.[0]?.url }}</p>
+    </div> -->
+    <div class="rounded-lg relative" *ngIf="!isLoadingAudi">
+      <img class="min-h-screen lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center" src="https://s.yimg.com/uu/api/res/1.2/pIKkkPvtWGOP5i8GxSEQaA--~B/aD0yNzYxO3c9NDU3NDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-02/6ee3def0-6b08-11eb-bfbf-a58e58381e9c.cf.jpg" alt="Image Size 720x400">
+      <div class="absolute top-20 left-10 bg-white text-lg w-[50%] p-10">
+        <h2 class="text-xl text-gray-900 font-bold title-font mb-4" >Audi | Luxury sedans, SUVs, convertibles, electric vehicles & more</h2>
+        <p class="text-base pb-6">Discover the latest models and offers from
+          Audi
+          , including the all-new
+          Audi
+          Q6 e-tron, a fully electric SUV. Explore the e-tron lineup,
+          Audi
+          Sport, and other body styles with 0.99% APR for up to 60 months.</p>
+          <a href="#" class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Saber más</a>
+      </div>
+
+      <p class="leading-relaxed text-base">{{ noticiasAudi?.data?.[0]?.url }}</p>
+    </div>
+  </div>
+
+
+  <div>
+    <div
+    class="flex flex-col gap-4 justify-center items-center mt-[150px]"
+    *ngIf="isLoadingVW"
+  >
+    <svg
+      aria-hidden="true"
+      class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+    <span class="text-xl font-semibold text-gray-500 ml-4"
+      >Cargando Noticia</span
+    >
+    <span class="sr-only">Loading...</span>
+  </div>
+    <!-- <div class="p-6 rounded-lg bg-slate-300" *ngIf="!isLoadingVW">
+      <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://parkers-images.bauersecure.com/gallery-image/pagefiles/308613/1752x1168/vw-id4-098.jpg" alt="Image Size 720x400">
+      <h2 class="text-lg text-gray-900 font-medium title-font mb-4" [innerHTML]="noticiasVolkswagen?.data?.[0]?.title"></h2>
+      <p [innerHTML]="noticiasVolkswagen?.data?.[1]?.description"></p>
+      <p class="leading-relaxed text-base">{{ noticiasVolkswagen?.data?.[0]?.url }}</p>
+    </div> -->
+    <div class="rounded-lg relative" *ngIf="!isLoadingVW">
+      <img class="min-h-screen lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center" src="https://parkers-images.bauersecure.com/gallery-image/pagefiles/308613/1752x1168/vw-id4-098.jpg" alt="Image Size 720x400">
+      <div class="absolute top-20 left-10 bg-white text-lg w-[50%] p-10">
+        <h2 class="text-xl text-gray-900 font-bold title-font mb-4">VW.com | Official Home of Volkswagen Cars & SUVs</h2>
+        <p class="text-base pb-6">Volkswagen
+          (VW; German pronunciation: [ˈfɔlksˌvaːɡn̩] ⓘ) is a German automobile manufacturer headquartered in Wolfsburg, Lower Saxony, Germany.Founded in 1937 by the German Labour Front under the Nazi Party and revived into the global brand it is known as today post World War II by the British Army officer Ivan Hirst, it is known for the iconic Beetle and serves as the flagship brand ...</p>
+        <p class="leading-relaxed text-base">{{ noticiasVolkswagen?.data?.[0]?.url }}</p>
+        <a href="#" class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Saber más</a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+    class="flex flex-col gap-4 justify-center items-center mt-[150px]"
+    *ngIf="isLoadingCupra"
+  >
+    <svg
+      aria-hidden="true"
+      class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+    <span class="text-xl font-semibold text-gray-500 ml-4"
+      >Cargando Noticia</span
+    >
+    <span class="sr-only">Loading...</span>
+  </div>
+    <!-- <div class="p-6 rounded-lg bg-slate-300" *ngIf="!isLoadingCupra">
+      <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://th.bing.com/th/id/OIP.pGrn4n07pHtyUqTLr3iZjgHaEl?w=305&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+      <h2 class="text-lg text-gray-900 font-medium title-font mb-4" [innerHTML]="noticiasCupra?.data?.[0]?.title"></h2>
+      <p [innerHTML]="noticiasCupra?.data?.[0]?.description"></p>
+      <p class="leading-relaxed text-base">{{ noticiasCupra?.data?.[0]?.url }}</p>
+    </div> -->
+    <div  class="rounded-lg relative" *ngIf="!isLoadingCupra">
+      <img class="min-h-screen lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center" src="https://images.unsplash.com/photo-1655288739707-4ea032b39a58?q=80&w=1985&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+      <div class="absolute top-20 left-10 bg-white text-lg w-[50%] p-10">
+        <h2 class="text-xl text-gray-900 font-bold title-font mb-4">A New Generation of E-Hybrid and Electric Cars | CUPRA</h2>
+        <p class="text-base pb-6">CUPRA
+          is a contemporary sports car brand that offers e-hybrid and electric models, such as the
+          CUPRA
+          DarkRebel, Tavascan and Formentor. Explore the
+          CUPRA
+          universe, products, app and more on the official website.</p>
+        <a href="#" class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Saber más</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div
+    class="flex flex-col gap-4 justify-center items-center mt-[150px]"
+    *ngIf="isLoadingSeat"
+  >
+    <svg
+      aria-hidden="true"
+      class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+    <span class="text-xl font-semibold text-gray-500 ml-4"
+      >Cargando Noticia</span
+    >
+    <span class="sr-only">Loading...</span>
+  </div>
+    <!-- <div class="p-6 rounded-lg bg-slate-300" *ngIf="!isLoadingSeat">
+      <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://th.bing.com/th/id/R.b0307f775c6d4bdc539e17705c69c2c5?rik=WZ7MAt1t8TPYGA&pid=ImgRaw&r=0" alt="Image Size 720x400">
+      <h2 class="text-lg text-gray-900 font-medium title-font mb-4" [innerHTML]="noticiasSeat?.data?.[0]?.title"></h2>
+      <p [innerHTML]="noticiasSeat?.data?.[1]?.description"></p>
+      <p class="leading-relaxed text-base">{{ noticiasSeat?.data?.[0]?.url }}</p>
+    </div> -->
+    <div class="rounded-lg relative" *ngIf="!isLoadingSeat">
+      <img class="min-h-screen lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center" src="https://images.unsplash.com/photo-1614574829939-6ede9fcc5ed0?q=80&w=1796&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Size 720x400">
+      <div class="absolute top-20 left-10 bg-white text-lg w-[50%] p-10">
+        <h2 class="text-xl text-gray-900 font-bold title-font mb-4" >Discover Our Range of New and Used Cars | SEAT</h2>
+        <p class="text-base pb-6"><b>SEAT</b> is a leading car manufacturer in Europe, offering a range of models from city cars to SUVs, electric and hybrid vehicles. Explore the <b>SEAT</b> range, discover the latest awards, special editions and sustainability initiatives.</p>
+        <a href="#" class="bg-[#171616] hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Saber más</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

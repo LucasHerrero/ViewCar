@@ -1,0 +1,95 @@
+<div class="">
+  <div class="mt-10">
+    <p class="text-lg mb-3">{{ 'general.welcome' | translate }}</p>
+    <div class="flex text-3xl">
+      <span class="font-extrabold text-6xl pr-1">5.</span>
+      <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'exteriorColor.selectExterior' | translate }} {{
+        selectedExtColor?.pack?.model?.brand?.brandName }} {{ selectedExtColor?.pack?.model?.model }}</h1>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="flex flex-col mt-5 pb-2">
+    <div class="flex items-center gap-2 mb-1">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 1.5C0 1.22386 0.223858 1 0.5 1H2.5C2.77614 1 3 1.22386 3 1.5C3 1.77614 2.77614 2 2.5 2H0.5C0.223858 2 0 1.77614 0 1.5ZM4 1.5C4 1.22386 4.22386 1 4.5 1H14.5C14.7761 1 15 1.22386 15 1.5C15 1.77614 14.7761 2 14.5 2H4.5C4.22386 2 4 1.77614 4 1.5ZM4 4.5C4 4.22386 4.22386 4 4.5 4H11.5C11.7761 4 12 4.22386 12 4.5C12 4.77614 11.7761 5 11.5 5H4.5C4.22386 5 4 4.77614 4 4.5ZM0 7.5C0 7.22386 0.223858 7 0.5 7H2.5C2.77614 7 3 7.22386 3 7.5C3 7.77614 2.77614 8 2.5 8H0.5C0.223858 8 0 7.77614 0 7.5ZM4 7.5C4 7.22386 4.22386 7 4.5 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H4.5C4.22386 8 4 7.77614 4 7.5ZM4 10.5C4 10.2239 4.22386 10 4.5 10H11.5C11.7761 10 12 10.2239 12 10.5C12 10.7761 11.7761 11 11.5 11H4.5C4.22386 11 4 10.7761 4 10.5ZM0 13.5C0 13.2239 0.223858 13 0.5 13H2.5C2.77614 13 3 13.2239 3 13.5C3 13.7761 2.77614 14 2.5 14H0.5C0.223858 14 0 13.7761 0 13.5ZM4 13.5C4 13.2239 4.22386 13 4.5 13H14.5C14.7761 13 15 13.2239 15 13.5C15 13.7761 14.7761 14 14.5 14H4.5C4.22386 14 4 13.7761 4 13.5Z"
+          fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+      </svg>
+      <span>{{ 'general.filters' | translate }}</span>
+    </div>
+    <p><span class="font-bold">{{extColors.length}}</span> {{ 'exteriorColor.availableVariants' | translate }}</p>
+  </div>
+
+  <!-- Aside -->
+  <div class="md:flex md:flex-row flex-col gap-10">
+    <div class="md:w-[60%] w-full">
+      <!-- Slider imagenes -->
+      <div class="image-viewer relative">
+        <img class="w-full md:h-[420px] object-cover" [src]="selectedImageList[currentImageIndex]" alt="Image">
+        <button class="absolute left-5 top-1/2 hover:scale-125 transition-all ease-in-out duration-300"
+          (click)="previousImage()">
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button class="absolute right-5 top-1/2 hover:scale-125 transition-all ease-in-out duration-300"
+          (click)="nextImage()">
+          <svg width="32" height="32" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z"
+              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="md:w-[40%] w-full">
+      <!-- Listado de los modelos -->
+      <div class="mb-8">
+        <p class="font-semibold text-lg leading-[20px] tracking-tight">
+
+        </p>
+        <p class="font-extrabold text-[45px] -mt-2">
+
+        </p>
+      </div>
+      <div class="border rounded-md p-4 mb-3 relative">
+        <p><span class="font-bold text-lg pb-1">{{ 'exteriorColor.selectColor' | translate }}</span></p>
+        <hr class="my-2">
+        <div class="flex gap-5">
+          <div *ngFor="let color of extColors" class="relative flex justify-start my-4 gap-3">
+            <div class="hover:cursor-pointer" (click)="onExtColorClick(color)">
+              <img class="w-10 h-10 rounded-full border-2 object-cover p-0.5"
+                [ngClass]="{'border-[#028102]': color === selectedExtColor}" src="{{ color.circulo }}" alt="">
+            </div>
+            <svg class="absolute left-7 -top-2 bg-white rounded-full" *ngIf="color === selectedExtColor" width="24"
+              height="24" viewBox="0 0 15 15" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.49991 0.877045C3.84222 0.877045 0.877075 3.84219 0.877075 7.49988C0.877075 11.1575 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1575 14.1227 7.49988C14.1227 3.84219 11.1576 0.877045 7.49991 0.877045ZM1.82708 7.49988C1.82708 4.36686 4.36689 1.82704 7.49991 1.82704C10.6329 1.82704 13.1727 4.36686 13.1727 7.49988C13.1727 10.6329 10.6329 13.1727 7.49991 13.1727C4.36689 13.1727 1.82708 10.6329 1.82708 7.49988ZM10.1589 5.53774C10.3178 5.31191 10.2636 5.00001 10.0378 4.84109C9.81194 4.68217 9.50004 4.73642 9.34112 4.96225L6.51977 8.97154L5.35681 7.78706C5.16334 7.59002 4.84677 7.58711 4.64973 7.78058C4.45268 7.97404 4.44978 8.29061 4.64325 8.48765L6.22658 10.1003C6.33054 10.2062 6.47617 10.2604 6.62407 10.2483C6.77197 10.2363 6.90686 10.1591 6.99226 10.0377L10.1589 5.53774Z"
+                fill="green" fill-rule="evenodd" clip-rule="evenodd">
+              </path>
+            </svg>
+          </div>
+        </div>
+
+        <p *ngIf="selectedExtColor">{{ selectedExtColor.color }}</p>
+        <hr class="my-2">
+        <div class="flex py-1 justify-between">
+          <div class="font-bold text-lg">
+            <ul>
+              <li class="font-bold text-lg">{{ 'general.price' | translate }}</li>
+            </ul>
+          </div>
+          <div class="font-bold text-lg">
+            <ul>
+              <li class=""><span>{{ selectedExtColor?.price }}€</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

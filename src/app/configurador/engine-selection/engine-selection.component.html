@@ -1,0 +1,103 @@
+<div class="">
+  <div class="mt-10">
+    <p class="text-lg mb-3">{{ 'motor.welcome' | translate }}</p>
+    <div class="flex text-3xl">
+      <span class="font-extrabold text-6xl pr-1">4.</span>
+      <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'motor.selectMotor' | translate }} {{
+        selectedEngine?.model?.brand?.brandName }} {{ selectedEngine?.model?.model}}</h1>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="flex flex-col mt-5 pb-2">
+    <div class="flex items-center gap-2 mb-1">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 1.5C0 1.22386 0.223858 1 0.5 1H2.5C2.77614 1 3 1.22386 3 1.5C3 1.77614 2.77614 2 2.5 2H0.5C0.223858 2 0 1.77614 0 1.5ZM4 1.5C4 1.22386 4.22386 1 4.5 1H14.5C14.7761 1 15 1.22386 15 1.5C15 1.77614 14.7761 2 14.5 2H4.5C4.22386 2 4 1.77614 4 1.5ZM4 4.5C4 4.22386 4.22386 4 4.5 4H11.5C11.7761 4 12 4.22386 12 4.5C12 4.77614 11.7761 5 11.5 5H4.5C4.22386 5 4 4.77614 4 4.5ZM0 7.5C0 7.22386 0.223858 7 0.5 7H2.5C2.77614 7 3 7.22386 3 7.5C3 7.77614 2.77614 8 2.5 8H0.5C0.223858 8 0 7.77614 0 7.5ZM4 7.5C4 7.22386 4.22386 7 4.5 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H4.5C4.22386 8 4 7.77614 4 7.5ZM4 10.5C4 10.2239 4.22386 10 4.5 10H11.5C11.7761 10 12 10.2239 12 10.5C12 10.7761 11.7761 11 11.5 11H4.5C4.22386 11 4 10.7761 4 10.5ZM0 13.5C0 13.2239 0.223858 13 0.5 13H2.5C2.77614 13 3 13.2239 3 13.5C3 13.7761 2.77614 14 2.5 14H0.5C0.223858 14 0 13.7761 0 13.5ZM4 13.5C4 13.2239 4.22386 13 4.5 13H14.5C14.7761 13 15 13.2239 15 13.5C15 13.7761 14.7761 14 14.5 14H4.5C4.22386 14 4 13.7761 4 13.5Z"
+          fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+      </svg>
+      <span>{{ 'motor.filters' | translate }}</span>
+    </div>
+    <p>
+      <span class="font-bold">{{engines.length}} </span>
+      <ng-container *ngIf="engines.length < 2; else plural"> {{ 'motor.availableVariants' | translate }}</ng-container>
+      <ng-template #plural>{{ 'motor.availableVariants' | translate }}</ng-template>
+    </p>
+  </div>
+
+
+  <!-- Aside -->
+  <div class="md:flex md:flex-row flex-col gap-10">
+    <div class="md:w-[60%] w-full">
+      <img class="image-viewer relative object-cover md:h-[420px] w-full mt-10" [src]="getLocalstorageImageList()"
+        alt="Imagen_coche">
+    </div>
+
+    <div class="md:w-[40%] w-full">
+      <div class="mb-8">
+        <p class="font-semibold text-lg leading-[26px] tracking-tight">{{
+          selectedEngine?.model?.brand?.brandName }} {{ selectedEngine?.model?.model}}</p>
+        <p class="font-extrabold text-[45px]">{{ selectedEngine?.model?.model}}
+        </p>
+      </div>
+      <div class="border rounded-md p-4 mb-3 hover:cursor-pointer relative" *ngFor="let engine of engines"
+        (click)="onEngineClick(engine)"
+        [ngClass]="selectedEngine === engine ? 'border-black border-2' : 'border-gray-300'">
+        <p class="font-bold text-lg pb-1"> {{engine.name}}</p>
+        <hr class="my-1">
+        <div class="flex justify-between py-1">
+          <div>
+            <ul class="">
+              <li class="p-1">{{ 'motor.potencia' | translate }}</li>
+              <li class="p-1">{{ 'motor.combustible' | translate }}</li>
+              <li class="p-1">{{ 'motor.emision' | translate }}</li>
+              <li class="p-1">{{ 'motor.consumo' | translate }}</li>
+              <li class="p-1">{{ 'motor.transmision' | translate }}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="font-bold text-base text-right">
+              <li class="p-1">{{engine.power}} CV</li>
+              <li class="p-1">{{engine.fuel}}</li>
+              <li class="p-1">{{engine.emission}} g/km</li>
+              <li class="p-1">{{engine.consumption}} l/100km</li>
+              <li class="p-1">{{engine.transmission}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-2">
+          <button class=" font-semibold text-500 hover:underline" (click)="infoEngine(engine)">
+            {{ 'motor.ver_mas' | translate }}
+          </button>
+          <div *ngIf="showDescription && engine.description && selectedEngine === engine">
+            <p class="mt-2">{{engine.description}}</p>
+          </div>
+        </div>
+
+
+        <hr>
+        <div class="flex justify-between">
+          <div>
+            <ul class="">
+              <li class="py-2 font-bold text-lg mt-2">{{ 'motor.precio' | translate }}</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="font-bold text-base ">
+              <li class="py-2">{{engine.price | number:'1.0-0'}}<span class=""> €</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="absolute top-4 right-4" *ngIf="selectedEngine === engine">
+          <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.49991 0.877045C3.84222 0.877045 0.877075 3.84219 0.877075 7.49988C0.877075 11.1575 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1575 14.1227 7.49988C14.1227 3.84219 11.1576 0.877045 7.49991 0.877045ZM1.82708 7.49988C1.82708 4.36686 4.36689 1.82704 7.49991 1.82704C10.6329 1.82704 13.1727 4.36686 13.1727 7.49988C13.1727 10.6329 10.6329 13.1727 7.49991 13.1727C4.36689 13.1727 1.82708 10.6329 1.82708 7.49988ZM10.1589 5.53774C10.3178 5.31191 10.2636 5.00001 10.0378 4.84109C9.81194 4.68217 9.50004 4.73642 9.34112 4.96225L6.51977 8.97154L5.35681 7.78706C5.16334 7.59002 4.84677 7.58711 4.64973 7.78058C4.45268 7.97404 4.44978 8.29061 4.64325 8.48765L6.22658 10.1003C6.33054 10.2062 6.47617 10.2604 6.62407 10.2483C6.77197 10.2363 6.90686 10.1591 6.99226 10.0377L10.1589 5.53774Z"
+              fill="green" fill-rule="evenodd" clip-rule="evenodd">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

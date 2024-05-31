@@ -1,0 +1,222 @@
+{
+  "configurator": {
+    "brands": "Brands",
+    "models": "Models",
+    "packages": "Packages",
+    "engine": "Engine",
+    "exteriorColor": "Exterior color",
+    "interiorColor": "Interior color",
+    "tire": "Tires",
+    "optional": "Optional",
+    "resume": "Summary",
+    "back": "Back",
+    "next": "Next"
+  },
+  "brands": {
+    "welcome": "Welcome to the configurator",
+    "start": "Start by choosing your favorite brand",
+    "disponible": "brands available",
+    "selectBrand": "Select a brand"
+  },
+  "models": {
+    "start": "Choose your favorite model",
+    "disponible": "models available",
+    "selectModel": "Select a model",
+    "from": "From",
+    "emission": "Combined CO₂ emissions",
+    "consumption": "Combined fuel consumption",
+    "order": {
+      "newer": "Newer",
+      "ascendent": "Ascendent",
+      "descendent": "Descendent"
+    },
+    "ordenar": "Order by"
+  },
+  "packages": {
+    "start": "Choose a package for the",
+    "disponible": "packages available",
+    "selectPackage": "Select a package",
+    "from": "From",
+    "lights": "Headlights",
+    "seats": "Seats",
+    "bodywork": "Bodywork",
+    "info": "More information"
+  },
+  "motor": {
+    "welcome": "Welcome to the Viewcar configurator",
+    "selectMotor": "Select the engine for the",
+    "filters": "Filters",
+    "availableVariant": "engine available",
+    "availableVariants": "engines available",
+    "potencia": "Power",
+    "combustible": "Fuel type",
+    "emision": "Emission",
+    "consumo": "Consumption",
+    "transmision": "Transmission",
+    "ver_mas": "See more",
+    "precio": "Price"
+  },
+  "exteriorColor": {
+    "selectColor": "Select a color",
+    "selectExterior": "Select the exterior for the",
+    "availableVariants": "exterior variant availables"
+  },
+  "interiorColor": {
+    "selectInterior": "Select the interior for the",
+    "filters": "Filters",
+    "availableVariants": "interior variant available",
+    "selectColor": "Select a color"
+  },
+  "tires": {
+    "welcome": "Welcome to the Viewcar configurator",
+    "selectTire": "Select the tires for the",
+    "filters": "Filters",
+    "availableVariants": "tire variant available",
+    "selectTireSize": "Select a tire size",
+    "price": "Price",
+    "inches": "Inches",
+    "material": "Material",
+    "ver_mas": "See more"
+  },
+  "general": {
+    "welcome": "Welcome to the Viewcar configurator",
+    "selectInterior": "Select the interior for the",
+    "filters": "Filters",
+    "availableVariants": "interior variant available",
+    "selectColor": "Select a color",
+    "price": "Price"
+  },
+  "footer": {
+    "text": "Visit our social networks and stay updated with everything latest in the world of automobiles, get inspired with the most sought-after models and much more.",
+    "brands": "Brands",
+    "location": "Location",
+    "policy": "Policies",
+    "contact": "Contact",
+    "where": "Where are we?",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies policy",
+    "use": "Terms of use",
+    "copyright": "All rights reserved."
+  },
+  "register": {
+    "title": "Create an account",
+    "subtitle": "Enter your details to register",
+    "name": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "register": "Create account",
+    "login": "Log in",
+    "errors": {
+      "name": "First name is required",
+      "lastName": "Last name is required",
+      "email": "Email is required",
+      "emailInvalid": "Email is not valid",
+      "password": "Password is required",
+      "passwordInvalid": "Password must be at least 8 characters",
+      "confirmPassword": "Password confirmation is required",
+      "confirmPasswordInvalid": "Passwords do not match"
+    },
+    "conditions": "By clicking on 'Create account', you agree to our",
+    "terms": "Terms of Service",
+    "and": "and",
+    "privacy": "Privacy Policy"
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Enter your details to log in",
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in",
+    "conditions": "By clicking on 'Log in', you agree to our",
+    "terms": "Terms of Service",
+    "and": "and",
+    "privacy": "Privacy Policy"
+  },
+  "header": {
+    "marcas": "Our Brands",
+    "modelos": "Models",
+    "configurador": "Configure Your Car",
+    "contacto": "Contact",
+    "noticias": "News",
+    "login": "Log in",
+    "register": "Register",
+    "logout": "Log out",
+    "cuenta": "My account",
+    "ajustes": "Settings",
+    "vehiculos configurados": "Configured vehicles",
+    "cerrar sesion": "Log out",
+    "hola bienvenido": "Hello, welcome"
+  },
+  "admin": {
+    "bienvenido": "Welcome,",
+    "configuraciones": "Here you can see the vehicles you have configured",
+    "vehiculos": "Latest configured vehicles"
+  },
+  "buscar": {
+    "buscar": "Search",
+    "buscar...": "Search...",
+    "error": "No results found for the searchterm "
+
+  },
+  "brand_section": {
+    "title": "Our Brands"
+  },
+
+  "add_model": {
+    "title1": "Model Creator",
+    "title2": "Start by choosing the brand",
+    "title3": "Write the new brand",
+    "title4": "Add the model you want to create",
+    "title5": "Write the model name",
+    "title6": "Tell me the price of this model",
+    "title7": "Combined CO₂ emissions",
+    "title8": "Combined fuel consumption",
+
+
+    "title9": "Create the new package here",
+    "title10": "Write the name of the package",
+    "titleprecio": "Tell me the price of this package",
+    "title11": "Tell me the headlights of this package",
+    "title12": "Tell me the body of this package",
+    "title13": "Tell me the seats of this package",
+    "title14": "Give me a description of this package",
+
+    "title15": "Add the new engine",
+    "title16": "Write the name of the engine",
+    "title17": "Power",
+    "title18": "Fuel type",
+    "title19": "Emission",
+    "title20": "Consumption",
+    "title21": "Transmission",
+    "title22": "More information",
+
+    "title23": "Add the new exterior color",
+    "title24": "Name of the exterior color",
+    "title25": "Price",
+    "title26": "White, Black, Grey, etc",
+    "title27": "Add the new color image",
+    "title28": "Add the images of the car in the selected color",
+
+    "title29": "Add the new interior color",
+    "title30": "Name of the interior color",
+    "title31": "Price",
+    "title32": "Add the image of the car's interior",
+
+    "extension": "The file must be in .png, .webp, .jpg or .jpeg format",
+
+    "title33": "Tell me the available tires",
+    "title34": "Write the name of the tire",
+    "title35": "Inches",
+    "title36": "Material",
+    "title37": "Color",
+    "title38": "Add the images of the tires",
+    "title39": "Price",
+    "title40": "Description"
+  }
+
+
+}

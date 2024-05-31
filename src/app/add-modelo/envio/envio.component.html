@@ -1,0 +1,150 @@
+<div>
+    <div class="mt-10">
+        <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+        <div class="flex text-3xl">
+            <span class="font-extrabold text-6xl pr-1">7.</span>
+            <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">Modelo añadido</h1>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h1 class="text-3xl font-black">{{ summary.brandName }} {{ summary.modelName }}</h1>
+    </div>
+
+    <div class="flex md:flex-row flex-col-reverse mt-8 gap-8">
+        <div class="w-full">
+            <div class="relative image-viewer mb-8">
+                <img class="m-auto w-[90%] md:h-[460px] object-cover" [src]="summary.modelImage" alt="Image">
+            </div>
+            <p class="mt-2 font-medium">{{ summary.brandName }} {{ summary.modelName }}
+                {{ summary.engineName }} ({{
+                summary.enginePower }} CV) {{ summary.engineTransmission }} | {{
+                summary.engineFuel }} | {{ 'resume.consumption' | translate }} {{
+                summary.engineConsumption }} l/100km {{ 'resume.emisions' | translate }}: {{
+                summary.engineEmission }} g/km
+            </p>
+            <div class="mt-10">
+                <div class="mt-6">
+                    <span class="font-semibold text-2xl">1. Paquete
+                    </span>
+                    <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                        <p class="font-semibold text-lg flex justify-between pb-3">{{ summary.packageName }}
+                            <span>{{ summary.packagePrice | currency: 'EUR'}}</span>
+                        </p>
+                        <hr>
+                        <div class="flex justify-between">
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">{{ 'resume.bodywork' | translate }}</p>
+                                <p>{{ summary.packageBodywork }}</p>
+                            </div>
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">{{ 'resume.lights' | translate }}</p>
+                                <p>{{ summary.packageHeadlights }}</p>
+                            </div>
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">{{ 'resume.seats' | translate }}</p>
+                                <p>{{ summary.packageSeats }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <span class="font-semibold text-2xl">2. Motor
+                    </span>
+                    <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                        <p class="font-semibold text-lg flex justify-between pb-3"> {{ summary.engineName }}
+                            <span>{{ summary.enginePrice | currency: 'EUR'}}</span>
+                        </p>
+                        <hr>
+                        <div class="flex justify-between">
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">Potencia</p>
+                                <p>{{ summary.enginePower }} CV</p>
+                            </div>
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">Transmisión</p>
+                                <p>{{ summary.engineTransmission }}</p>
+                            </div>
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">Consumo</p>
+                                <p>{{ summary.engineConsumption }} l/100km</p>
+                            </div>
+                            <div class="justify-between mt-5">
+                                <p class="font-semibold">Emisiones</p>
+                                <p>{{ summary.engineEmission }} g/km</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <span class="font-semibold text-2xl">3. Color exterior
+                    </span>
+                    <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                        <p class="font-semibold text-lg flex justify-between pb-3">
+                            <span>{{ summary.exteriorColorName }}</span>
+                            <span>{{ summary.exteriorColorPrice | currency: 'EUR'}}</span>
+                        </p>
+                        <div class="flex justify-center">
+                            <img class="w-16 h-16 rounded-full border-2 object-cover p-1"
+                                [src]="summary.exteriorColorCirculo" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <span class="font-semibold text-2xl">4. Color interior
+                        <button class="ml-2" >
+                            <svg data-testid="geist-icon" height="18" stroke-linejoin="round" viewBox="0 0 16 16"
+                                width="18" style="color: currentcolor;">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                    fill="currentColor">
+                                </path>
+                            </svg>
+                        </button>
+                    </span>
+                    <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                        <p class="font-semibold text-lg flex justify-between pb-3">
+                            <span>{{ summary.interiorColorName }}</span>
+                            <span *ngIf="summary.interiorColorPrice == 0; else priceBlock">{{ 'resume.cost' |
+                                translate }}</span>
+                            <ng-template #priceBlock>{{ summary.interiorColorPrice | currency: 'EUR' }}</ng-template>
+                        </p>
+                        <div class="flex justify-center">
+                            <img class="w-16 h-16 rounded-full border-2 object-cover p-1"
+                                [src]="summary.interiorColorCirculo" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <span class="font-semibold text-2xl">5. Llantas
+                        <button class="ml-2" >
+                            <svg data-testid="geist-icon" height="18" stroke-linejoin="round" viewBox="0 0 16 16"
+                                width="18" style="color: currentcolor;">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                    fill="currentColor">
+                                </path>
+                            </svg>
+                        </button>
+                    </span>
+                    <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                        <p class="font-semibold text-lg flex justify-between">
+                            {{ summary.tireName }}
+                            <span>{{ summary.tirePrice | currency: 'EUR' }}</span>
+                        </p>
+                        <p>{{ summary.tireDescription }}</p>
+                        <div class="flex justify-center mt-4">
+                            <img class="w-16 h-16 rounded-full border-2 object-cover p-1" src="{{ summary.tireCirculo }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

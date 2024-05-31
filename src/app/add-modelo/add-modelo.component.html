@@ -1,0 +1,47 @@
+<div class="m-auto pb-16">
+  <ng-container *ngComponentOutlet="createComponent(currentStep())"></ng-container>
+  <div class="flex md:flex-row flex-col items-center gap-2 mt-10">
+    <button *ngIf="currentStep() > 0" (click)="previous()"
+      class="flex items-center justify-center md:w-fit w-full bg-[#171616] text-[#ece9e1] px-7 py-1 rounded-3xl">
+      <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8.81809 4.18179C8.99383 4.35753 8.99383 4.64245 8.81809 4.81819L6.13629 7.49999L8.81809 10.1818C8.99383 10.3575 8.99383 10.6424 8.81809 10.8182C8.64236 10.9939 8.35743 10.9939 8.1817 10.8182L5.1817 7.81819C5.09731 7.73379 5.0499 7.61933 5.0499 7.49999C5.0499 7.38064 5.09731 7.26618 5.1817 7.18179L8.1817 4.18179C8.35743 4.00605 8.64236 4.00605 8.81809 4.18179Z"
+          fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+        </path>
+      </svg>
+      {{ 'configurator.back' | translate }}
+    </button>
+
+    <button #botonSiguiente [disabled]="(currentStep() === 0 && isBrandFieldsEmpty()) ||
+                  (currentStep() === 1 && isModelFieldsEmpty()) ||
+                  (currentStep() === 2 && isPackageFieldsEmpty()) ||
+                  (currentStep() === 3 && isMotorFieldsEmpty()) ||
+                  (currentStep() === 4 && isExtColorFieldsEmpty()) ||
+                  (currentStep() === 5 && isIntColorFieldsEmpty()) ||
+                  (currentStep() === 6 && isTireFieldsEmpty())"
+      (click)="currentStep() === 7 ? onDeleteModelClicked() : (currentStep() === 6 ? submitForm() : next())"
+      class="bg-[#171616] flex items-center justify-center md:w-fit w-full text-[#ece9e1] px-7 py-1 rounded-3xl disabled:bg-black/50">
+      {{ currentStep() === 7 ? 'Finalizar' : ('configurator.next' | translate) }}
+      <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M6.18194 4.18185C6.35767 4.00611 6.6426 4.00611 6.81833 4.18185L9.81833 7.18185C9.90272 7.26624 9.95013 7.3807 9.95013 7.50005C9.95013 7.6194 9.90272 7.73386 9.81833 7.81825L6.81833 10.8182C6.6426 10.994 6.35767 10.994 6.18194 10.8182C6.0062 10.6425 6.0062 10.3576 6.18194 10.1819L8.86374 7.50005L6.18194 4.81825C6.0062 4.64251 6.0062 4.35759 6.18194 4.18185Z"
+          fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+        </path>
+      </svg>
+    </button>
+  </div>
+</div>
+<div class="fixed inset-0 bg-black/30 flex items-center justify-center backdrop-blur-sm" *ngIf="showLoader">
+  <div class="flex flex-col gap-4 justify-center items-center mt-[280px]">
+    <svg aria-hidden="true" class="w-14 h-14 text-gray-200 animate-spin fill-black"
+      viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor" />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill" />
+    </svg>
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

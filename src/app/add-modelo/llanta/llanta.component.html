@@ -1,0 +1,102 @@
+<div class="mt-10">
+  <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+  <div class="flex text-3xl">
+    <span class="font-extrabold text-6xl pr-1">7.</span>
+    <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'add_model.title33' | translate }}</h1>
+  </div>
+  <form class="space-y-4 pt-12">
+    <!-- Campo para el nombre de la marca -->
+    <div class="mb-5">
+      <label for="tireName" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title34' | translate }}
+      </label>
+      <input type="text" value="{{ tireName }}" name="tireName" id="tireName" placeholder="Pretoria, etc."
+        (change)="onInputChange32($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="md:flex gap-5">
+      <div class="md:w-1/2 md:mb-0 mb-5">
+        <label for="text" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title41' | translate }}
+        </label>
+        <div class="mt-3">
+          <input type="file" (change)="onInputChange33($event)"
+            class="w-full h-fit text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+          <div class="mt-3">
+            <img class="w-16 h-16 rounded-full border-2 object-cover p-1 m-auto" [src]="imagePreview1"
+              *ngIf="imagePreview1" alt="Vista previa de la imagen">
+          </div>
+        </div>
+        <div *ngIf="isFileSelected1()" [ngClass]="{'hidden': isValidExtension(extension1)}"
+          class="text-red-500 text-md mt-2">
+          {{ 'add_model.extension' | translate }}
+        </div>
+      </div>
+
+      <div class="md:w-1/2">
+        <label for="text" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title38' | translate }}
+        </label>
+        <div class="mt-3">
+          <input type="file" (change)="onInputChange34($event)"
+            class="w-full h-fit text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+          <div class="mt-5">
+            <img class="rounded-md border md:w-96 w-full h-44 object-cover bg-white" [src]="imagePreview2"
+              *ngIf="imagePreview2" alt="Vista previa de la imagen">
+          </div>
+        </div>
+        <div *ngIf="isFileSelected2()" [ngClass]="{'hidden': isValidExtension(extension2)}"
+          class="text-red-500 text-md mt-2">
+          {{ 'add_model.extension' | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <label for="tirePrice" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title39' | translate }}
+      </label>
+      <input type="number" value="{{ tirePrice }}" name="tirePrice" id="tirePrice" placeholder=" €"
+        (change)="onInputChange35($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="tireInches" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title35' | translate }}
+      </label>
+      <input type="number" min="0" value="{{ tireInches }}" name="tireInches" id="tireInches" placeholder="18 , 19, etc."
+        (change)="onInputChange36($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="tireMat" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title36' | translate }}
+      </label>
+      <input type="text" value="{{ tireMat }}" name="tireMat" id="tireMat" placeholder="Aleación, Aluminio, etc."
+        (change)="onInputChange37($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="tireColor" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title37' | translate }}
+      </label>
+      <input type="text" value="{{ tireColor }}" name="tireColor" id="tireColor" placeholder="Negras, Plateadas, etc."
+        (change)="onInputChange38($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="tireDescription" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title40' | translate }}
+      </label>
+      <input type="text" value="{{ tireDescription }}" name="tireDescription" id="tireDescription"
+        placeholder="Llantas de aleación 8 J x 18, Neumáticos 245 / 40 R 18, etc." (change)="onInputChange39($event)"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+  </form>
+</div>

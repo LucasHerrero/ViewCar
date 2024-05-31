@@ -1,0 +1,45 @@
+<button mat-icon-button style="position: absolute; right: 5px; top: 5px;" matDialogClose>
+  <mat-icon>close</mat-icon>
+
+</button>
+
+<mat-dialog-content>
+  <header>
+    <h1 class="flex justify-center">{{ 'buscar.buscar' | translate }}</h1>
+  </header>
+  <hr>
+  <div class="flex justify-center content-center pt-52">
+    <mat-form-field style="width: 80%; justify-content: center; text-align:center; align-content: center;">
+      <input matInput placeholder="{{ 'buscar.buscar...' | translate }}" class="text-lg"
+       [formControl]="searchValue"
+       (input)="search()"
+        [matAutocomplete]="auto"
+       >
+       <mat-autocomplete autoActiveFirstOption
+       #auto="matAutocomplete"
+       (optionSelected)="onOptionSelected($event)">
+       <mat-option *ngFor="let model of models" [value]="model">
+         {{model.model}}
+        </mat-option>
+        <mat-option *ngIf="models.length === 0 && searchValue.value && searchValue.value.length > 0" [value]="null">
+          {{ 'buscar.error' | translate }} "{{searchValue.value}}"
+        </mat-option>
+        </mat-autocomplete>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+        <!--TODO: Quitar esto y agregar las opciones-->
+        <!--TODO: Que se le pueda dar enter sin necesidad de que esten las opciones-->
+
+
+  </div>
+  <div class=" flex flex-wrap gap-4 mt-6 hover:cursor-pointer group-hover:scale-110 justify-center">
+    <div *ngFor="let model of models "
+        class="flex flex-col lg:w-[32%] justify-between bg-[#F8F8F6] text-center p-4 py-6 mt-4">
+        <p class="font-bold text-2xl font-['Poppins']">{{ model.model }}</p>
+        <img class="hover:scale-125 transition-all ease-in-out w-[350px] h-[140px] object-cover scale-105 m-auto mb-10 mt-4" src="{{ model.image }}" (click)="navigateToConfigurator(model.id)">
+        <p class="font-normal text-lg">{{ 'models.from' | translate }} <span class="font-bold text-2xl">{{model.price |
+                number:'1.0-0'}}€</span></p>
+    </div>
+</div>
+</mat-dialog-content>
+

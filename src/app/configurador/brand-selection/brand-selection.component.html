@@ -1,0 +1,18 @@
+<div class="">
+
+    <div class="mt-10">
+        <p class="text-lg mb-3">{{ 'brands.welcome' | translate }}</p>
+        <div class="flex text-3xl">
+            <span class="font-extrabold text-6xl pr-1">1.</span>
+            <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'brands.start' | translate }}</h1>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="flex flex-col mt-5">
+        <p><span class="font-bold">{{brandsService.brandList.length}}</span> {{ 'brands.disponible' | translate }}</p>
+    </div>
+
+    <!-- Listado de marcas -->
+    <app-card-list [Brands]="brandsService.brandList"></app-card-list>
+</div>

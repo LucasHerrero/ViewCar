@@ -1,0 +1,73 @@
+<div class="mt-10">
+  <p class="text-lg mb-3">{{ 'add_model.title1' | translate }}</p>
+  <div class="flex text-3xl">
+    <span class="font-extrabold text-6xl pr-1">2.</span>
+    <h1 class="md:pt-2.5 md:pl-0 pl-2 font-light">{{ 'add_model.title4' | translate }}</h1>
+  </div>
+  <form class="space-y-4 pt-12">
+
+    <div class="md:flex gap-6">
+      <!-- Campo para el nombre de la marca -->
+      <div class="mb-5 md:w-[60%]">
+        <label for="modelName" class="mb-3 block text-xl font-medium text-[#07074D]">
+          {{ 'add_model.title5' | translate }}
+        </label>
+        <input type="text" name="modelName" id="modelName" placeholder="A3, Polo, etc."
+          (change)="onInputChange3($event)" value="{{modelName}}"
+          class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+      </div>
+
+      <div class="flex-column gap-4 md:w-[40%]">
+        <div>
+          <label for="modelName" class="mb-3 block text-xl font-medium text-[#07074D]">
+            Imagen del modelo
+          </label>
+          <input type="file" (change)="onInputChange4($event)"
+            class="w-full text-black text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-black file:hover:bg-gray-700 file:text-white rounded" />
+        </div>
+        <div class="mt-5">
+          <img class="rounded-md border w-full h-60 object-cover bg-white" [src]="imagePreview" *ngIf="imagePreview"
+            alt="Vista previa de la imagen">
+        </div>
+      </div>
+
+
+      <div *ngIf="isFileSelected()" [ngClass]="{'hidden': isValidExtension(extension)}"
+        class="text-red-500 text-md mt-2">
+        {{ 'add_model.extension' | translate }}
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <label for="number" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title6' | translate }}
+      </label>
+      <input type="number" name="price" id="price" placeholder=" €" (change)="onInputChange5($event)"
+        value="{{modelPrice}}"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+
+    <div class="mb-5">
+      <label for="emissions" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title7' | translate }}
+      </label>
+      <input type="text" name="emissions" id="emissions" placeholder=" g/km" (change)="onInputChange6($event)"
+        value="{{modelEmission}}"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+    <div class="mb-5">
+      <label for="consumption" class="mb-3 block text-xl font-medium text-[#07074D]">
+        {{ 'add_model.title8' | translate }}
+      </label>
+      <input type="text" name="consumption" id="consumption" placeholder=" l/100km" (change)="onInputChange7($event)"
+        value="{{modelFuel}}"
+        class="w-full rounded-md border border-[#b1b1b1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#000000] focus:shadow-md" />
+    </div>
+
+
+  </form>
+
+
+</div>

@@ -1,0 +1,11 @@
+<h1 class="text-4xl font-extrabold text-center mt-20 tracking-tighter">{{ 'brand_section.title' | translate }}</h1>
+<p class="text-center">Elige entre nuestras marcas para hacerte con el coche tus sueños</p>
+<!-- Listado de marcas -->
+  <div id="brand-section" class="flex gap-4 mt-8 justify-center items-center">
+    <div class="relative w-full md:w-56 h-40 mt-8 flex flex-col justify-center items-center p-4 rounded-xl hover:bg-[#F8F8F6]/80 cursor-pointer"
+        *ngFor="let brand of brandsService.brandList" (click)="onBrandSelected(brand.id)">
+        <img class="w-60" src="{{brand.image}}" alt="">
+    </div>
+  </div>
+
+

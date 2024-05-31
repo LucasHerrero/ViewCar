@@ -1,0 +1,219 @@
+<header *ngIf="isAccountOrAdminRoute(); else defaultHeader"
+    class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+    <div class="flex flex-wrap justify-between items-center">
+        <div class="flex justify-start items-center">
+            <button data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation"
+                aria-controls="drawer-navigation"
+                class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <svg aria-hidden="true" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Toggle sidebar</span>
+            </button>
+            <a href="/" class="flex items-center justify-between mr-4">
+                <img src="assets/images/logo.svg" class="ml-6 w-16 scale-[2.2]" alt="Flowbite Logo" />
+            </a>
+        </div>
+        <div class="flex items-center lg:order-2">
+            <!-- Perfil -->
+            <button type="button"
+                class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-300 dark:focus:ring-gray-600"
+                id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown" (click)="toggleDropdown()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div class="hidden absolute top-14 right-0 transform translate-x-0 mt-3 z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl" id="dropdown">
+                <div class="py-3 px-4">
+                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">{{ decodedToken.name }} {{
+                        decodedToken.surname }}</span>
+                    <span class="block text-sm text-gray-900 truncate dark:text-white">{{ decodedToken.sub }}</span>
+                </div>
+                <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                            {{'header.cuenta' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                            {{'header.ajustes' | translate }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                    <li>
+                        <a href="#"
+                            class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><svg
+                                class="mr-2 w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+                                </path>
+                            </svg>
+                            {{'header.vehiculos configurados' | translate }}</a>
+                    </li>
+                </ul>
+                <ul class="py-1 text-gray-700 dark:text-gray-300 w-full" aria-labelledby="dropdown">
+                    <li class="hover:cursor-pointer">
+                        <a (click)="logout()"
+                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            {{'header.cerrar sesion' | translate }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<ng-template #defaultHeader>
+    <header [ngClass]="{ 'scrolled': isScrolled }" class="border-bottom bg-gradient-to-b from-black/90 from-35% to-transparent sticky z-40 top-0 md:h-24 h-32">
+        <div class="flex justify-between items-center p-3">
+            <!--Menu lateral-->
+            <div class="w-28 md:block md:w-auto px-5 absolute top-5 left-3" id="navbar-dropdown">
+                <ul
+                    class="flex flex-col font-medium md:p-0 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 -mt-1.5 md:border-0">
+                    <li>
+                        <button id="dropdownNavbarIzqLink" data-dropdown-toggle="dropdownNavbarIzq"
+                            class="flex items-center justify-between w-auto py-2  text-gray-300 rounded p-0 md:hover:bg-transparent md:border-0 md:hover:text-[#5eead4] md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500  ">
+                            <!---- 3 rayas Dropdown-->
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbarIzq"
+                            class="z-10 hidden font-normal bg-slate-300 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                                aria-labelledby="dropdownLargeButton">
+                                <li>
+                                    <a href="#brand-section"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{'header.marcas' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="/modelos"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{'header.modelos' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="/configurador"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{'header.configurador' | translate }}
+                                       </a>
+                                </li>
+                                <li>
+                                    <a href="/contacto"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{'header.contacto' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{'header.noticias' | translate }}</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Buscador y Perfil-->
+            <div class="flex flex-row absolute md:top-4 top-2 right-0">
+
+                <button mat-button (click)="openDialog()"
+                    class="my-auto h-8 w-10 md:mr-0 -mr-10 rounded-lg peer-focus:relative peer-focus:rounded-l-none bg-transparent">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50"
+                        class="fill-gray-300 w-7 h-7">
+                        <path
+                            d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z">
+                        </path>
+                    </svg>
+                </button>
+
+                <!--Dropdown Perfil-->
+                <div class="w-28  md:block md:w-auto px-5" id="navbar-dropdown">
+                    <ul
+                        class="flex flex-col font-medium md:p-0 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                                class="flex items-center justify-between w-auto py-2 px-3 text-gray-300 rounded  p-0 md:hover:bg-transparent md:border-0 md:hover:text-[#5eead4] md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                <!--Logo perfil-->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                </svg>
+                                <!--Flecha Dropdown-->
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div id="dropdownNavbar"
+                                class="absolute hidden right-0 z-10 mt-z w-44 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                role="menu" aria-orientation="vertical" aria-labelledby="dropdownLargeButton"
+                                tabindex="-1">
+                                <div class="py-1" role="none">
+                                    <!-- Si el usuario está autenticado -->
+                                    <div *ngIf="isAuthenticated()">
+                                        <p class="text-gray-700 block px-4 py-2 text-sm">{{'header.hola bienvenido' | translate }}
+                                            {{decodedToken.name}} {{ decodedToken.surname }}!
+                                        </p>
+                                        <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                            id="menu-item-0"
+                                            [routerLink]="isAuthenticated() ? (getAccountLabel() === 'Administración' ? '/administracion' : '/cuenta') : '/login'">
+                                            {{'header.cuenta' | translate }}
+                                        </a>
+                                        <button (click)="logout()" class="text-gray-700 block px-4 py-2 text-sm"
+                                            role="menuitem" tabindex="-1" id="menu-item-0">{{'header.logout' | translate }}
+                                        </button>
+                                    </div>
+                                    <!-- Si el usuario no está autenticado -->
+                                    <div *ngIf="!isAuthenticated()">
+                                        <button (click)="openDialogLogin()"
+                                            class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                            id="menu-item-0">{{'header.login' | translate }}
+                                        </button>
+                                        <a href="/registro" class="text-gray-700 block px-4 py-2 text-sm"
+                                            role="menuitem" tabindex="-1" id="menu-item-1">{{'header.register' | translate }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Raya separadora-->
+        <div class="w-full pt-5 text-white h-0 md:mt-0 mt-3">
+            <div class="inline-flex items-center justify-center w-full">
+                <hr class="md:w-[66%] w-[30%] h-0.5 my-8 bg-gray-200 border-0 rounded  absolute left-0">
+                <div class="absolute md:-translate-x-3/4 bg-transparent md:left-3/4 px-2">
+                    <a href="#">
+                        <img src="assets/images/logo.svg" alt="Logo" class="h-36 md:w-48 invert">
+                    </a>
+                </div>
+                <hr class="md:w-[22.5%] w-[30%] h-0.5 my-8 bg-gray-200 border-0 rounded  absolute right-0">
+            </div>
+        </div>
+    </header>
+</ng-template>

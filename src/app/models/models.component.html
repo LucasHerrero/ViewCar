@@ -1,0 +1,78 @@
+<div>
+    <div class="w-[90%] m-auto my-14">
+        <div class="flex items-baseline justify-between border-b border-gray-200 pb-6">
+
+            <div class="flex flex-col mt-1">
+                <p class="text-4xl font-bold tracking-tight text-gray-900">{{ 'configurator.models' | translate }}</p>
+                <div (click)="toggleSidebar()" class="flex items-center gap-2 mb-1">
+
+                </div>
+                <p><span class="font-bold">{{models.length}}</span> {{ 'models.disponible' | translate }}</p>
+            </div>
+            <div class="flex items-center">
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button type="button"
+                            class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                            id="menu-button" aria-expanded="false" aria-haspopup="true" (click)="toggleDropdown()">
+                            {{ 'models.ordenar' | translate }}
+                            <svg class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div *ngIf="dropdownOpen"
+                        class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                id="menu-item-2">{{ 'models.order.newer' | translate }}</a>
+                            <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                id="menu-item-3">{{ 'models.order.ascendent' | translate }}</a>
+                            <a href="#" class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                id="menu-item-4">{{ 'models.order.descendent' | translate }}</a>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+                    <span class="sr-only">Ver grid</span>
+                    <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <button type="button" class="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
+                    <span class="sr-only">Filters</span>
+                    <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-6 hover:cursor-pointer group-hover:scale-110">
+            <div *ngFor="let model of models"
+                class="flex flex-col lg:w-[32%] justify-between bg-[#F8F8F6] text-center p-4 py-6">
+                <p class="font-bold text-2xl font-['Poppins']">{{ model.model }}</p>
+                <img class="hover:scale-125 transition-all ease-in-out w-[350px] h-[140px] object-cover scale-105 m-auto mb-10 mt-4" src="{{ model.image }}" (click)="navigateToModelInfo(model.id)">
+                <p class="font-normal text-lg">{{ 'models.from' | translate }} <span class="font-bold text-2xl">{{model.price |
+                        number:'1.0-0'}}€</span></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="showSidebar" class="fixed inset-0 bg-black opacity-50 z-40" (click)="toggleSidebar()"></div>
+    <div *ngIf="showSidebar" class="z-50 fixed inset-0 transform translate-x-0 transition-transform duration-200 ease-in-out bg-white w-64 overflow-auto">
+        <!-- Aquí van tus filtros -->
+        <input placeholder="Precio máximo" type="number" class="m-4 p-2 border rounded">
+        <!-- Puedes agregar más filtros aquí -->
+    </div>
+</div>

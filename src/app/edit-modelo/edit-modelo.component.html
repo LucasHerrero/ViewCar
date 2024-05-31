@@ -1,0 +1,293 @@
+<div class="flex flex-col gap-4 justify-center items-center mt-[200px] mb-[200px]" *ngIf="isLoading">
+    <svg aria-hidden="true" class="w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-black"
+        viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor" />
+        <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill" />
+    </svg>
+    <span class="text-2xl font-semibold text-gray-500 ml-4 mt-3">Cargando Modelo</span>
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="w-[90%] m-auto pb-16" *ngIf="!isLoading">
+    <div class="mt-10">
+        <div class="flex text-3xl items-center gap-2">
+            <button class="font-extrabold pr-1" (click)="volver()">
+                <svg width="40" height="40" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.85355 3.14645C7.04882 3.34171 7.04882 3.65829 6.85355 3.85355L3.70711 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H3.70711L6.85355 11.1464C7.04882 11.3417 7.04882 11.6583 6.85355 11.8536C6.65829 12.0488 6.34171 12.0488 6.14645 11.8536L2.14645 7.85355C1.95118 7.65829 1.95118 7.34171 2.14645 7.14645L6.14645 3.14645C6.34171 2.95118 6.65829 2.95118 6.85355 3.14645Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h1 class="md:pl-0 pl-2 font-semibold">
+                Datos del vehiculo
+                <strong>{{ modelo.brand.brandName }} {{ modelo.model }}</strong>
+            </h1>
+        </div>
+    </div>
+    <div class="w-full">
+        <div class="relative image-viewer mb-8">
+            <img class="w-full md:h-[420px] object-cover" [src]="modelo.image" alt="Image" />
+        </div>
+        <div class="mt-10" id="editConfig">
+            <div class="mt-6">
+                <span class="font-semibold text-2xl">Modelo
+                    <button class="ml-2" (click)="editModelForm()">
+                        <svg data-testid="geist-icon" height="18" stroke-linejoin="round" viewBox="0 0 16 16" width="18"
+                            style="color: currentcolor;">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </button>
+                </span>
+
+                <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                    <p class="font-semibold text-lg flex justify-between pb-3">
+                        Modelo
+                        <span></span>
+                    </p>
+                    <hr />
+                    <div class="flex justify-between">
+                        <div class="justify-between mt-5 flex-grow w-full">
+                            <p class="font-semibold">
+                                Marca del modelo
+                            </p>
+                            <p>{{modelo.brand.brandName}}</p>
+                        </div>
+                        <div class="justify-between mt-5 flex-grow w-full">
+                            <p class="font-semibold">
+                                Nombre del modelo
+                            </p>
+                            <p>{{modelo.model}}</p>
+                        </div>
+                        <div class="justify-between mt-5 flex-grow w-full">
+                            <p class="font-semibold">Imagen del modelo</p>
+                            <img class="w-40" [src]="modelo.image" alt="">
+                        </div>
+                        <div class="justify-between mt-5 flex-grow w-full">
+                            <p class="font-semibold">Precio del modelo</p>
+                            <p>{{modelo.price}}</p>
+                        </div>
+                        <div class="justify-between mt-5 flex-grow w-full">
+                            <p class="font-semibold">Descripcion del modelo</p>
+                            <p>{{modelo.description}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10" id="editConfig">
+                    <div class="mt-6">
+                        <span class="font-semibold text-2xl">1. Paquete
+                            <button class="ml-2" (click)="editPackageForm()">
+                                <svg data-testid="geist-icon" height="18" stroke-linejoin="round" viewBox="0 0 16 16"
+                                    width="18" style="color: currentcolor;">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                        fill="currentColor">
+                                    </path>
+                                </svg>
+                            </button>
+                        </span>
+
+                        <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                            <p class="font-semibold text-lg flex justify-between pb-3">
+                                Paquetes
+                            </p>
+                            <hr />
+                            <div class="flex flex-col justify-between flex-wrap" *ngFor="let paquete of package ">
+                                <div class="mt-3">
+                                    <div class="font-semibold pb-2">{{ paquete.name }}</div>
+                                    <div class="p-2 border rounded-md flex justify-between">
+                                        <div class="flex-1 p-2">
+                                            <p class="font-semibold">
+                                                Carroceria
+                                            </p>
+                                            <p>{{paquete.bodywork}}</p>
+                                        </div>
+                                        <div class="flex-1 p-2">
+                                            <p class="font-semibold">Faros</p>
+                                            <p>{{paquete.headlights}}</p>
+                                        </div>
+                                        <div class="flex-1 p-2">
+                                            <p class="font-semibold">Asientos</p>
+                                            <p>{{paquete.seats}}</p>
+                                        </div>
+                                        <div class="flex-1 p-2">
+                                            <p class="font-semibold">Precio</p>
+                                            <p>{{paquete.price}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ENGINE  ENGINE  -->
+
+                        <div class="mt-8">
+                            <span class="font-semibold text-2xl">2. Motor
+                                <button class="ml-2" (click)="editEngineForm()">
+                                    <svg data-testid="geist-icon" height="18" stroke-linejoin="round"
+                                        viewBox="0 0 16 16" width="18" style="color: currentcolor;">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                            fill="currentColor">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </span>
+                            <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                                <p class="font-semibold text-lg flex justify-between pb-3">
+
+                                    <span>Motor</span>
+                                </p>
+                                <hr>
+                                <div class="flex flex-col justify-between flex-wrap" *ngFor="let motor of engine ">
+                                    <div class="mt-3">
+                                        <div class="font-semibold pb-2">{{ motor.name }}</div>
+                                        <div class="w-full p-2 border rounded-md flex justify-between">
+                                            <div class="flex-1 p-2">
+                                                <p class="font-semibold">Potencia</p>
+                                                <p>{{motor.power}}</p>
+                                            </div>
+                                            <div class="flex-1 p-2">
+                                                <p class="font-semibold">Transmisión</p>
+                                                <p>{{motor.transmission}}</p>
+                                            </div>
+                                            <div class="flex-1 p-2">
+                                                <p class="font-semibold">Consumo</p>
+                                                <p>{{motor.consumption}} l/100km</p>
+                                            </div>
+                                            <div class="flex-1 p-2">
+                                                <p class="font-semibold">Emisiones</p>
+                                                <p>{{motor.emission}} g/km</p>
+                                            </div>
+                                            <div class="flex-1 p-2">
+                                                <p class="font-semibold">Combustible</p>
+                                                <p>{{motor.fuel}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Engine arriba -->
+
+                            <div class="mt-8">
+                                <span class="font-semibold text-2xl">3. Color Exterior
+                                    <button class="ml-2" (click)="editExtColorForm()">
+                                        <svg data-testid="geist-icon" height="18" stroke-linejoin="round"
+                                            viewBox="0 0 16 16" width="18" style="color: currentcolor;">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </span>
+
+                                <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                                    <p class="font-semibold text-lg flex justify-between pb-3">
+                                        Colores exteriores
+                                    </p>
+                                    <hr />
+                                    <div class="flex gap-3">
+                                        <div class=" mt-3 w-1/4" *ngFor="let color of extColor ">
+                                            <div
+                                                class="p-2 border rounded-md flex flex-col justify-center items-center">
+                                                <div class="font-semibold pb-2">{{ color.color }}</div>
+                                                <div class="flex-1 p-2">
+                                                    <p>{{color.price}}€</p>
+                                                </div>
+                                                <div class="flex-1 p-2">
+                                                    <img class="w-16 h-16 rounded-full border-2 object-cover p-1"
+                                                        [src]="color.circulo" alt="color">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mt-8">
+                                <span class="font-semibold text-2xl">4. Color Interior
+                                    <button class="ml-2" (click)="editIntcolorForm()">
+                                        <svg data-testid="geist-icon" height="18" stroke-linejoin="round"
+                                            viewBox="0 0 16 16" width="18" style="color: currentcolor;">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </span>
+
+                                <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                                    <p class="font-semibold text-lg flex justify-between pb-3">
+                                        Colores interiores
+                                    </p>
+                                    <hr />
+                                    <div class="flex gap-3">
+                                        <div class="mt-3 w-1/4" *ngFor="let color of intColor">
+                                            <div
+                                                class="p-2 border rounded-md flex flex-col justify-center items-center">
+                                                <div class="font-semibold pb-2">{{ color.color }}</div>
+                                                <div class="flex-1 p-2">
+                                                    <p>{{color.price}}€</p>
+                                                </div>
+                                                <div class="flex-1 p-2">
+                                                    <img class="w-16 h-16 rounded-full border-2 object-cover p-1"
+                                                        [src]="color.circulo" alt="color">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8">
+                                <span class="font-semibold text-2xl">5. Llantas
+
+                                    <button class="ml-2" (click)="editTiresForm()">
+                                        <svg data-testid="geist-icon" height="18" stroke-linejoin="round"
+                                            viewBox="0 0 16 16" width="18" style="color: currentcolor;">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.75 0.189331L12.2803 0.719661L15.2803 3.71966L15.8107 4.24999L15.2803 4.78032L5.15901 14.9016C4.45575 15.6049 3.50192 16 2.50736 16H0.75H0V15.25V13.4926C0 12.4981 0.395088 11.5442 1.09835 10.841L11.2197 0.719661L11.75 0.189331ZM11.75 2.31065L9.81066 4.24999L11.75 6.18933L13.6893 4.24999L11.75 2.31065ZM2.15901 11.9016L8.75 5.31065L10.6893 7.24999L4.09835 13.841C3.67639 14.2629 3.1041 14.5 2.50736 14.5H1.5V13.4926C1.5 12.8959 1.73705 12.3236 2.15901 11.9016ZM9 16H16V14.5H9V16Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </span>
+                                <div class="mt-5 border-2 border-green-600 rounded-md p-4">
+                                    <p class="font-semibold text-lg flex justify-between">
+                                        Llantas
+                                    </p>
+                                    <hr>
+                                    <div class="block md:flex md:gap-3">
+                                        <div class=" mt-3 w-1/4" *ngFor="let tire of tires ">
+                                            <div
+                                                class="p-2 border rounded-md flex flex-col justify-center items-center">
+                                                <div class="font-semibold pb-2">{{ tire.name }}</div>
+                                                <div class="flex-1 p-2">
+                                                    <p>{{tire.price}}€</p>
+                                                </div>
+                                                <div class="flex-1 p-2">
+                                                    <img class="w-16 h-16 rounded-full border-2 object-cover p-1"
+                                                        [src]="tire.circulo" alt="color">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

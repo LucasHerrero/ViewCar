@@ -1,0 +1,210 @@
+<div class="bg-white p-5 rounded shadow-lg max-w-3xl mx-auto">
+  <form (submit)="saveMotor()" #form="ngForm">
+    <div class="flex gap-4">
+
+    <div>
+      <div class="mb-5">
+        <label for="motorSelect" class="block text-sm font-bold text-black"
+          >Primero seleccione el Motor a editar</label
+        >
+        <select
+          name="MotorId"
+          id="MotorId"
+          [(ngModel)]="selectedMotor"
+          (change)="selectMotor(selectedMotor)"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option selected value="" disabled>Selecciona un Motor</option>
+          <option *ngFor="let Motor of motor; let i = index" [value]="i">
+            {{ Motor.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Campo para Nombre -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="name" class="block text-sm font-medium text-gray-700"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="selectedMotor.name"
+          required
+          #name="ngModel"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div
+          *ngIf="name.invalid && name.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <!-- Campo para el precio -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="price" class="block text-sm font-medium text-gray-700"
+          >Precio</label
+        >
+        <input
+          type="number"
+          id="price"
+          name="price"
+          [(ngModel)]="selectedMotor.price"
+          required
+          #price="ngModel"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div
+          *ngIf="price.invalid && price.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <!-- Campo para potencia -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="power" class="block text-sm font-medium text-gray-700"
+          >Potencia</label
+        >
+        <input
+          type="number"
+          id="power"
+          name="power"
+          [(ngModel)]="selectedMotor.power"
+          required
+          #power="ngModel"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div
+          *ngIf="power.invalid && power.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <!-- Campo para transmisión -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="transmission" class="block text-sm font-bold text-black"
+          >Seleccione el tipo de transmisión</label
+        >
+        <select
+          name="transmission"
+          id="transmission"
+          [(ngModel)]="transSeleccionado"
+          (change)="selectTrans(transSeleccionado)"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option [value]="'Automatico'">Automatico</option>
+          <option [value]="'Manual'">Manual</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <!-- Campo para consumo -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="consumption" class="block text-sm font-medium text-gray-700"
+          >Consumo</label
+        >
+        <input
+          type="number"
+          id="consumption"
+          name="consumption"
+          [(ngModel)]="selectedMotor.consumption"
+          required
+          #consumption="ngModel"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div
+          *ngIf="consumption.invalid && consumption.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <!-- Campo para emisiones -->
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="emissions" class="block text-sm font-medium text-gray-700"
+          >Emisiones</label
+        >
+        <input
+          type="number"
+          id="emissions"
+          name="emissions"
+          [(ngModel)]="selectedMotor.emission"
+          required
+          #emissions="ngModel"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <div
+          *ngIf="emissions.invalid && emissions.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="description" class="block text-sm font-medium text-gray-700"
+          >Descripción del motor</label
+        >
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="selectedMotor.description"
+          required
+          #description="ngModel"
+          class="mt-1 block w-full h-[119px] py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        ></textarea>
+        <div
+          *ngIf="description.invalid && description.touched"
+          class="text-red-500 mt-2 text-sm"
+        >
+          Este campo es obligatorio
+        </div>
+      </div>
+      <!-- fuel -->
+
+      <div class="mb-5" *ngIf="selectedMotor">
+        <label for="fuel" class="block text-sm font-bold text-black"
+          >Seleccione el tipo de Combustible</label
+        >
+        <select
+          name="fuel"
+          id="fuel"
+          [(ngModel)]="fuelseleccionado"
+          (change)="selectFuel(fuelseleccionado)"
+          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option [value]="'Gasolina'">Gasolina</option>
+          <option [value]="'Diésel'">Diésel</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+    <!-- ... existing buttons ... -->
+    <div class="flex justify-between">
+      <button
+        type="button"
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-900"
+        (click)="cancel()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>
